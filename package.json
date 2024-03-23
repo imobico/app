@@ -2,14 +2,14 @@
   "name": "imoblr-app",
   "private": true,
   "workspaces": [
-    "./apps/*",
-    "./packages/*"
+    "apps/*",
+    "packages/*"
   ],
   "scripts": {
     "native": "cd apps/expo && yarn start",
     "watch": "yarn workspaces foreach -pi run watch",
     "vercel:install": "yarn set version 3.5 && yarn install",
-    "web": "yarn build && cd apps/next && yarn next",
+    "web": "turbo dev --parallel --filter={next-app,@t4/api}",
     "web:extract": "DISABLE_EXTRACTION=false yarn workspace next-app dev",
     "web:prod": "yarn workspace next-app build",
     "web:prod:serve": "yarn workspace next-app serve",
@@ -34,7 +34,7 @@
     "eslint": "^8.21.0",
     "node-gyp": "^9.3.1",
     "prettier": "^2.7.1",
-    "turbo": "^1.10.3",
+    "turbo": "latest",
     "typescript": "^5.3.3"
   },
   "packageManager": "yarn@4.1.0"
