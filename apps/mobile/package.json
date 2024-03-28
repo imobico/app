@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.18.9",
-    "@expo/config-plugins": "~7.2.2",
+    "@expo/config-plugins": "~7.8.0",
     "@my/ui": "0.0.1",
     "@react-navigation/native": "^6.1.6",
     "app": "0.0.0",
