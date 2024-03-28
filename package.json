@@ -6,10 +6,10 @@
     "packages/*"
   ],
   "scripts": {
-    "native": "cd apps/expo && bun start",
+    "native": "cd apps/mobile && bun start",
     "watch": "bun workspaces foreach -pi run watch",
     "vercel:install": "bun set version 3.5 && bun install",
-    "web": "turbo dev --parallel --filter={imoblr-web,@t4/api}",
+    "web": "turbo dev --parallel --filter={imoblr-web,@my/ui}",
     "web:extract": "DISABLE_EXTRACTION=false bun workspace imoblr-web dev",
     "web:prod": "bun workspace imoblr-web build",
     "web:prod:serve": "bun workspace imoblr-web serve",
@@ -19,8 +19,8 @@
     "upgrade:tamagui": "bun up '*tamagui*'@latest '@tamagui/*'@latest react-native-web-lite@latest",
     "upgrade:tamagui:canary": "bun up '*tamagui*'@canary '@tamagui/*'@canary react-native-web-lite@canary",
     "check-deps": "check-dependency-version-consistency .",
-    "desktop": "cd apps/tauri && bun dev",
-    "build:desktop": "cd apps/tauri && bun run build"
+    "desktop": "cd apps/desktop && bun dev",
+    "build:desktop": "cd apps/desktop && bun run build"
   },
   "resolutions": {
     "react": "^18.2.0",

@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "build": "tamagui-build --skip-types",
-    "watch": "tamagui-build --skip-types --watch"
+    "dev": "tamagui-build --skip-types --watch"
   },
   "dependencies": {
     "@my/config": "0.0.1",

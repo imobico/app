@@ -6,7 +6,6 @@
     "paths": {
       "react-native": ["react-native-web"],
       "app/*": ["../../packages/app/*"],
-      "@t4/api/*": ["../../packages/api/*"],
       "@t4/ui/*": ["../../packages/ui/*"]
     },
     "allowJs": true,

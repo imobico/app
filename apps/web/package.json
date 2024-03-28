@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "cd ../.. && bun build && cd apps/next && next build",
+    "build": "cd ../.. && bun build && cd apps/web && next build",
     "start": "next start",
     "serve": "NODE_ENV=production next start --port 8151",
     "lint": "next lint"
