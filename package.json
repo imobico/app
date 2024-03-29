@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
-    "dev": "turbo dev",
+    "build:web": "turbo build --parallel --filter={imoblr-web,@repo/ui,@repo/config}",
+    "dev:web": "turbo dev --parallel --filter={imoblr-web,@repo/ui,@repo/config}",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
@@ -14,7 +15,7 @@
     "turbo": "latest"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "packageManager": "bun@1.0.33",
   "workspaces": [

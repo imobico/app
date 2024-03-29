@@ -1,3 +1,12 @@
 {
-  "extends": "@repo/typescript-config/base.json"
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "noUncheckedIndexedAccess": true,
+    "paths": {
+      "app/*": ["./packages/app/*"],
+      "@repo/ui/*": ["./packages/ui/*"]
+    }
+  },
+  "extends": "@repo/typescript-config/base.json",
+  "exclude": ["**/node_modules", "**/dist", "**/types", "apps/next/out", "apps/next/.next", "apps/next/.tamagui"]
 }

@@ -1,8 +1,5 @@
 import Image from "next/image";
-import { Card } from "@repo/ui/card";
-import { Code } from "@repo/ui/code";
 import styles from "./page.module.css";
-import { Button } from "@repo/ui/button";
 
 function Gradient({
   conic,
@@ -55,10 +52,7 @@ export default function Page(): JSX.Element {
   return (
     <main className={styles.main}>
       <div className={styles.description}>
-        <p>
-          examples/basic&nbsp;
-          <Code className={styles.code}>web</Code>
-        </p>
+        <p>examples/basic&nbsp;</p>
         <div>
           <a
             href="https://vercel.com?utm_source=create-turbo&utm_medium=basic&utm_campaign=create-turbo"
@@ -77,10 +71,6 @@ export default function Page(): JSX.Element {
           </a>
         </div>
       </div>
-
-      <Button appName="web" className={styles.button}>
-        Click me!
-      </Button>
 
       <div className={styles.hero}>
         <div className={styles.heroContent}>
@@ -134,9 +124,9 @@ export default function Page(): JSX.Element {
 
       <div className={styles.grid}>
         {LINKS.map(({ title, href, description }) => (
-          <Card className={styles.card} href={href} key={title} title={title}>
+          <a className={styles.card} href={href} key={title} title={title}>
             {description}
-          </Card>
+          </a>
         ))}
       </div>
     </main>
