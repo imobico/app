@@ -61,8 +61,8 @@ types/
 **/.dev.vars
 
 # Expo
-apps/expo/ios/**
-apps/expo/android/**
+apps/mobile/ios/**
+apps/mobile/android/**
 
 # Expo Builds
 **/*.apk

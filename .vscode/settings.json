@@ -18,7 +18,7 @@
     "**/.gitignore": false,
     "**/types": false,
     "**/dist": false,
-    "apps/expo/index.js": false,
+    "apps/mobile/index.js": false,
     "**/metro.config.js": false,
     "**/eas.json": false,
     "**/tamagui.config.ts": false,
