@@ -10,7 +10,6 @@ export const SignUpScreen = (): React.ReactNode => {
   const { replace } = useRouter()
   const toast = useToastController()
 
-
   return (
     <YStack flex={1} justifyContent='center' alignItems='center' space>
       <SignUpSignInComponent />

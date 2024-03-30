@@ -6,8 +6,8 @@ export const SignUpScreen = (): React.ReactNode => {
     <YStack flex={1} justifyContent='center' alignItems='center' space>
       <SignUpSignInComponent
         type='sign-up'
-        handleOAuthWithPress={() => { }}
-        handleEmailWithPress={() => { }}
+        handleOAuthWithPress={() => {}}
+        handleEmailWithPress={() => {}}
       />
     </YStack>
   )

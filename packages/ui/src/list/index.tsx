@@ -15,7 +15,7 @@ export function VirtualList<T>({ data, renderItem, itemHeight }: Props): React.R
     (item) => {
       return renderItem(item.item)
     },
-    [renderItem]
+    [renderItem],
   )
 
   return (

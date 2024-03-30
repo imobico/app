@@ -6,7 +6,7 @@ import { TamaguiThemeProvider } from './theme'
 import { ToastViewport } from './toast-viewport'
 
 export function Provider({
-  children
+  children,
 }: {
   children: React.ReactNode
 }) {

@@ -5,7 +5,6 @@ import { useRouter } from 'solito/router'
 export function PasswordResetScreen() {
   const { push } = useRouter()
 
-
   const handleEmailWithPress = async () => {
     // Send email with the password reset link
 
