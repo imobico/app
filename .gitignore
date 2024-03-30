@@ -53,10 +53,12 @@ THUMBS_DB
 node_modules/
 types/
 
+# Turbo
+.turbo
+
 # Cloudflare D1
 **/.wrangler/*
 **/.dev.vars
-.turbo
 
 # Expo
 apps/expo/ios/**

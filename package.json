@@ -6,11 +6,11 @@
   "scripts": {
     "ios": "cd apps/expo && bun ios",
     "android": "cd apps/expo && bun android",
-    "web": "cd apps/next && bun dev",
+    "web": "cd apps/web && bun dev",
     "native": "cd apps/expo && bun dev",
     "native:prod": "cd apps/expo && bun dev:prod",
     "build": "cd packages/ui && tamagui-build",
-    "build:web": "cd apps/next && bun run build",
+    "build:web": "turbo build --parallel --filter={@imoblr/web-app,@/ui,@repo/config}",
     "build:ios": "cd apps/expo && bun build:ios",
     "build:android": "cd apps/expo && bun build:android",
     "build:ios:preview": "cd apps/expo && bun build:ios:preview",
@@ -24,7 +24,7 @@
     "deps:fix": "manypkg fix",
     "deps:update": "bun x npm-check-updates -ui -ws",
     "postinstall": "bun run build && bun check-deps && bun format",
-    "clean": "git clean -xdf node_modules && rm -f bun.lockb && rm -rf ./apps/next/.next && rm -rf ./apps/next/.tamagui && rm -rf ./apps/next/node_modules && rm -rf ./packages/ui/dist"
+    "clean": "git clean -xdf node_modules && rm -f bun.lockb && rm -rf ./apps/web/.next && rm -rf ./apps/web/.tamagui && rm -rf ./apps/web/node_modules && rm -rf ./packages/ui/dist"
   },
   "workspaces": ["apps/*", "packages/*"],
   "dependencies": {

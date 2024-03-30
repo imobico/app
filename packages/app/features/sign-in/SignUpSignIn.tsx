@@ -20,7 +20,7 @@ export const SignUpSignInComponent = (): React.ReactNode => {
       backgroundColor='$background'
     >
       <Paragraph size='$5' fontWeight={'700'} opacity={0.8} marginBottom='$1'>
-        {type === 'sign-up' ? 'Create your account' : 'Sign in to your account'}
+        {/* {type === 'sign-up' ? 'Create your account' : 'Sign in to your account'} */}
       </Paragraph>
       {/* all the oauth sign up options */}
       <XStack space justifyContent={'space-evenly'} theme='light'>
@@ -114,7 +114,7 @@ export const SignUpSignInComponent = (): React.ReactNode => {
         <Paragraph size='$2' marginRight='$2' opacity={0.4}>
           {/* {type === 'sign-up' ? 'Already have an account?' : 'Don’t have an account?'} */}
         </Paragraph>
-        <Link href={type === 'sign-up' ? '/sign-in' : '/sign-up'}>
+        <Link href={'/sign-up'}>
           <Paragraph
             cursor={'pointer'}
             size='$2'
