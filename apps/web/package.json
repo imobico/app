@@ -12,7 +12,7 @@
     "clean": "git clean -xdf .next node_modules .tamagui"
   },
   "dependencies": {
-    "@cloudflare/next-on-pages": "1.8.3",
+    "@cloudflare/next-on-pages": "1.11.0",
     "@ducanh2912/next-pwa": "^9.7.2",
     "@imoblr/ui": "workspace:*",
     "@tamagui/next-theme": "1.75.9",
