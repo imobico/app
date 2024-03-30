@@ -1,4 +1,4 @@
-import { config } from '@t4/ui'
+import { config } from '@imoblr/ui'
 
 type Conf = typeof config
 

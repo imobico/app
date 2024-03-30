@@ -1,4 +1,4 @@
-import { TamaguiProvider as TamaguiProviderOG } from '@t4/ui'
+import { TamaguiProvider as TamaguiProviderOG } from '@imoblr/ui'
 import config from '../../tamagui.config'
 import { useRootTheme } from '../theme'
 

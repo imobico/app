@@ -1,4 +1,4 @@
-import { Paragraph, YStack } from '@t4/ui'
+import { Paragraph, YStack } from '@imoblr/ui'
 import { GetServerSideProps } from 'next'
 
 export const runtime = 'experimental-edge'

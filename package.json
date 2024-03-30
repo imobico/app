@@ -6,11 +6,11 @@
   "scripts": {
     "ios": "cd apps/expo && bun ios",
     "android": "cd apps/expo && bun android",
-    "web": "cd apps/web && bun dev",
+    "dev:web": "turbo dev --parallel --filter={@imoblr/web-app,@imoblr/ui,@repo/config}",
     "native": "cd apps/expo && bun dev",
     "native:prod": "cd apps/expo && bun dev:prod",
     "build": "cd packages/ui && tamagui-build",
-    "build:web": "turbo build --parallel --filter={@imoblr/web-app,@/ui,@repo/config}",
+    "build:web": "turbo build --parallel --filter={@imoblr/web-app,@imoblr/ui,@repo/config}",
     "build:ios": "cd apps/expo && bun build:ios",
     "build:android": "cd apps/expo && bun build:android",
     "build:ios:preview": "cd apps/expo && bun build:ios:preview",

@@ -1,4 +1,4 @@
-import { Button, Input, Paragraph, Stack, XStack, YStack } from '@t4/ui'
+import { Button, Input, Paragraph, Stack, XStack, YStack } from '@imoblr/ui'
 import { useState } from 'react'
 import { SolitoImage } from 'solito/image'
 import { Link } from 'solito/link'

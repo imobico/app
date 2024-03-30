@@ -4,7 +4,7 @@
     "noUncheckedIndexedAccess": true,
     "paths": {
       "app/*": ["./packages/app/*"],
-      "@t4/ui/*": ["./packages/ui/*"]
+      "@imoblr/ui/*": ["./packages/ui/*"]
     },
     "plugins": [
       {

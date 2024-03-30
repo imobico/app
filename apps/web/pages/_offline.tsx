@@ -1,4 +1,4 @@
-import { Anchor, Button, H1, Paragraph, XStack, YStack } from '@t4/ui'
+import { Anchor, Button, H1, Paragraph, XStack, YStack } from '@imoblr/ui'
 import { RotateCw } from '@tamagui/lucide-icons'
 import Head from 'next/head'
 import { useRouter } from 'next/router'

@@ -1,5 +1,5 @@
 {
-  "name": "@t4/ui",
+  "name": "@imoblr/ui",
   "version": "2.0.0",
   "sideEffects": ["*.css"],
   "private": true,

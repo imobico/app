@@ -1,4 +1,4 @@
-import { CustomToast, ToastProvider } from '@t4/ui'
+import { CustomToast, ToastProvider } from '@imoblr/ui'
 import { SafeAreaProvider } from './safe-area'
 import { SolitoImageProvider } from './solito-image'
 import { TamaguiProvider } from './tamagui'

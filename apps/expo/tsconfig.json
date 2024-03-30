@@ -6,7 +6,7 @@
     "baseUrl": ".",
     "paths": {
       "app/*": ["../../packages/app/*"],
-      "@t4/ui/*": ["../../packages/ui/*"]
+      "@imoblr/ui/*": ["../../packages/ui/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]

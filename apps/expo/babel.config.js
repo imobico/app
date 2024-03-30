@@ -10,7 +10,7 @@ module.exports = function (api) {
           root: ['../..'],
           alias: {
             app: '../../packages/app',
-            '@t4/ui': '../../packages/ui',
+            @imoblr/ui: '../../packages/ui',
           },
           extensions: ['.js', '.jsx', '.tsx', '.ios.js', '.android.js'],
         },
@@ -21,7 +21,7 @@ module.exports = function (api) {
             [
               '@tamagui/babel-plugin',
               {
-                components: ['@t4/ui', 'tamagui'],
+                components: ['@imoblr/ui', 'tamagui'],
                 config: './tamagui.config.ts',
               },
             ],

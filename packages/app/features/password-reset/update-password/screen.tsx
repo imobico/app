@@ -1,5 +1,5 @@
-import { YStack } from '@t4/ui'
-import { PasswordResetComponent } from '@t4/ui/src/PasswordReset'
+import { YStack } from '@imoblr/ui'
+import { PasswordResetComponent } from '@imoblr/ui/src/PasswordReset'
 
 export function UpdatePasswordScreen() {
   return (

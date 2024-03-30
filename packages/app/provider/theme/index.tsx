@@ -1,5 +1,5 @@
+import { useForceUpdate } from '@imoblr/ui'
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native'
-import { useForceUpdate } from '@t4/ui'
 import { appThemeKey, useAppTheme, useCurrentTheme } from 'app/atoms/theme'
 import { ThemeVariant } from 'app/utils/theme'
 import { StatusBar } from 'expo-status-bar'

@@ -10,8 +10,8 @@ import {
   XStack,
   YStack,
   useToastController,
-} from '@t4/ui'
-import { ThemeToggle } from '@t4/ui/src/ThemeToggle'
+} from '@imoblr/ui'
+import { ThemeToggle } from '@imoblr/ui/src/ThemeToggle'
 import { ChevronDown } from '@tamagui/lucide-icons'
 import React, { useState } from 'react'
 import { Linking } from 'react-native'

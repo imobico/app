@@ -34,7 +34,7 @@ const plugins = [
   withPWA,
   withTamagui({
     config: "./tamagui.config.ts",
-    components: ["tamagui", "@t4/ui"],
+    components: ["tamagui", "@imoblr/ui"],
     importsWhitelist: ["constants.js", "colors.js"],
     outputCSS:
       process.env.NODE_ENV === "production" ? "./public/tamagui.css" : null,

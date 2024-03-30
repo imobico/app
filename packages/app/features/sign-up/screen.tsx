@@ -1,4 +1,4 @@
-import { YStack } from '@t4/ui'
+import { YStack } from '@imoblr/ui'
 import { SignUpSignInComponent } from 'app/features/sign-in/SignUpSignIn'
 
 export const SignUpScreen = (): React.ReactNode => {
