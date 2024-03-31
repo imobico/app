@@ -13,7 +13,7 @@
     },
     "updates": {
       "enabled": false,
-      "url": "https://example.com"
+      "url": "https://u.expo.dev/dce7358a-68f2-4690-941b-169757e68b17"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
