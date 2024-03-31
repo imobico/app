@@ -8,7 +8,7 @@
   "files": ["types", "dist"],
   "scripts": {
     "build": "tamagui-build",
-    "watch": "tamagui-build --watch",
+    "dev": "tamagui-build --watch",
     "clean": "rm -rf dist types node_modules .turbo"
   },
   "dependencies": {

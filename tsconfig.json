@@ -3,8 +3,8 @@
     "strictNullChecks": true,
     "noUncheckedIndexedAccess": true,
     "paths": {
-      "app/*": ["./packages/app/*"],
-      "@imoblr/ui/*": ["./packages/ui/*"]
+      "@/shared/*": ["./packages/shared/*"],
+      "@/ui/*": ["./packages/ui/*"]
     },
     "plugins": [
       {

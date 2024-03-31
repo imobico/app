@@ -6,7 +6,7 @@
   "scripts": {
     "ios": "cd apps/mobile && bun ios",
     "android": "cd apps/mobile && bun android",
-    "dev:web": "turbo dev --parallel --filter={@imoblr/web-app,@imoblr/ui,@repo/config}",
+    "dev:web": "turbo dev --parallel --filter={@imoblr/web-app,@imoblr/ui}",
     "native": "cd apps/mobile && bun dev",
     "native:prod": "cd apps/mobile && bun dev:prod",
     "build": "cd packages/ui && tamagui-build",
