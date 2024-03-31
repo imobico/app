@@ -6,7 +6,6 @@
     "paths": {
       "react-native": ["react-native-web-lite"],
       "app/*": ["../../packages/app/*"],
-      "@t4/api/*": ["../../packages/api/*"],
       "@imoblr/ui/*": ["../../packages/ui/*"]
     },
     "allowJs": true,

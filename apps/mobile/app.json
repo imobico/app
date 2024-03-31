@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "t4-app",
-    "slug": "t4-app",
-    "scheme": "t4",
+    "name": "imoblr",
+    "slug": "imoblr",
+    "scheme": "imoblr",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -12,19 +12,20 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "enabled": false
+      "enabled": false,
+      "url": "https://example.com"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.t4.app"
+      "bundleIdentifier": "com.imoblr.app"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.t4.app"
+      "package": "com.imoblr.app"
     },
     "extra": {
       "eas": {
