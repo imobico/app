@@ -4,8 +4,10 @@
   "license": "MIT",
   "version": "3.0.0",
   "scripts": {
-    "ios": "cd apps/mobile && bun ios",
+    "dev:desktop": "",
     "dev:web": "turbo dev --parallel --filter={@imoblr/web-app,@imoblr/ui}",
+    "dev:ios": "turbo dev:ios --parallel --filter={@imoblr/mobile-app,@imoblr/ui}",
+    "dev:android": "turbo dev:android --parallel --filter={@imoblr/mobile-app,@imoblr/ui}",
     "native": "cd apps/mobile && bun dev",
     "native:prod": "cd apps/mobile && bun dev:prod",
     "build": "cd packages/ui && tamagui-build",

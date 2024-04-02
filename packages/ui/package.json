@@ -9,6 +9,8 @@
   "scripts": {
     "build": "tamagui-build",
     "dev": "tamagui-build --watch",
+    "dev:ios": "tamagui-build --watch",
+    "dev:android": "tamagui-build --watch",
     "clean": "rm -rf dist types node_modules .turbo"
   },
   "dependencies": {

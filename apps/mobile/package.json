@@ -4,16 +4,16 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "ios": "expo run:ios",
-    "android": "expo run:android",
-    "dev": "expo start --dev-client",
-    "dev:prod": "expo start --no-dev --minify",
+    "dev:ios": "expo run:ios",
+    "dev:android": "expo run:android",
     "prebuild": "expo prebuild",
     "build:ios:preview": "eas build --platform ios --profile preview --local",
     "build:android:preview": "eas build --platform android --profile preview --local",
     "build:ios": "eas build --platform ios --profile production --local",
     "build:android": "eas build --platform android --profile production --local",
-    "clean": "git clean -xdf .expo node_modules ios android"
+    "clean": "git clean -xdf .expo node_modules ios android",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
   },
   "dependencies": {
     "@babel/runtime": "^7.23.2",
