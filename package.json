@@ -8,8 +8,6 @@
     "dev:web": "turbo dev --parallel --filter={@imoblr/web-app,@imoblr/ui}",
     "dev:ios": "turbo dev:ios --parallel --filter={@imoblr/mobile-app,@imoblr/ui}",
     "dev:android": "turbo dev:android --parallel --filter={@imoblr/mobile-app,@imoblr/ui}",
-    "native": "cd apps/mobile && bun dev",
-    "native:prod": "cd apps/mobile && bun dev:prod",
     "build": "cd packages/ui && tamagui-build",
     "build:web": "turbo build --parallel --filter={@imoblr/web-app,@imoblr/ui,@repo/config}",
     "build:ios": "cd apps/mobile && bun build:ios",
@@ -28,13 +26,13 @@
   },
   "workspaces": ["apps/*", "packages/*"],
   "dependencies": {
-    "@babel/runtime": "^7.23.2",
+    "@babel/runtime": "^7.24.1",
     "@biomejs/biome": "1.3.3",
     "@nderscore/tamagui-typescript-plugin": "^0.6.0",
     "check-dependency-version-consistency": "^4.1.0",
     "npm-run-all": "^4.1.5",
     "react-native-url-polyfill": "^2.0.0",
-    "typescript": "^5.2.2",
+    "typescript": "^5.4.3",
     "workerd": "1.20231218.0"
   }
 }

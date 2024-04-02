@@ -12,27 +12,27 @@
     "clean": "git clean -xdf .next node_modules .tamagui"
   },
   "dependencies": {
-    "@cloudflare/next-on-pages": "1.8.3",
-    "@ducanh2912/next-pwa": "^9.7.2",
+    "@cloudflare/next-on-pages": "1.11.0",
+    "@ducanh2912/next-pwa": "^10.2.5",
     "@imoblr/ui": "workspace:*",
-    "@tamagui/next-theme": "1.75.9",
-    "@tsndr/cloudflare-worker-jwt": "2.2.7",
+    "@tamagui/next-theme": "1.94.1",
+    "@tsndr/cloudflare-worker-jwt": "2.5.3",
     "app": "workspace:*",
-    "million": "2.6.4",
+    "million": "3.0.6",
     "next": "14.1.4",
-    "next-seo": "^6.4.0",
-    "next-superjson-plugin": "^0.5.10",
+    "next-seo": "^6.5.0",
+    "next-superjson-plugin": "^0.6.3",
     "pattycake": "^0.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-native": "^0.72.6",
-    "react-native-web-lite": "1.75.9",
-    "webpack": "^5.88.2"
+    "react-native": "^0.73.6",
+    "react-native-web-lite": "1.94.1",
+    "webpack": "^5.91.0"
   },
   "devDependencies": {
-    "@tamagui/next-plugin": "1.75.9",
-    "@types/react": "^18.2.37",
-    "vercel": "33.0.2",
-    "wrangler": "3.22.3"
+    "@tamagui/next-plugin": "1.94.1",
+    "@types/react": "^18.2.73",
+    "vercel": "33.6.2",
+    "wrangler": "3.42.0"
   }
 }
