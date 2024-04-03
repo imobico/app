@@ -8,7 +8,7 @@ module.exports = function (api) {
         {
           root: ['../..'],
           alias: {
-            app: '../../packages/app',
+            app: '../../packages/shared',
             '@imoblr/ui': '../../packages/ui',
           },
           extensions: ['.js', '.jsx', '.tsx', '.ios.js', '.android.js'],

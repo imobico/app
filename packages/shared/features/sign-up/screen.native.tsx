@@ -1,6 +1,6 @@
+import { SignUpSignInComponent } from '@/shared/features/sign-in/SignUpSignIn'
 import { YStack, useToastController } from '@imoblr/ui'
 import { capitalizeWord } from '@imoblr/ui/src/libs/string'
-import { SignUpSignInComponent } from 'app/features/sign-in/SignUpSignIn'
 import { getInitialURL } from 'expo-linking'
 import * as WebBrowser from 'expo-web-browser'
 import { Platform } from 'react-native'

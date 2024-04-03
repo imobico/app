@@ -1,4 +1,4 @@
-import { ParamsScreen } from 'app/features/params/screen'
+import { ParamsScreen } from '@/shared/features/params/screen'
 import Head from 'next/head'
 
 export default function Page() {

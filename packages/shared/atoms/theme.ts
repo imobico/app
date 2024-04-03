@@ -1,5 +1,5 @@
-import { storage } from 'app/provider/kv'
-import { type CurrentThemeVariant, ThemeVariant } from 'app/utils/theme'
+import { storage } from '@/shared/provider/kv'
+import { type CurrentThemeVariant, ThemeVariant } from '@/shared/utils/theme'
 import { atom, useAtom } from 'jotai'
 import { Appearance } from 'react-native'
 

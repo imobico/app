@@ -8,7 +8,7 @@ on:
     paths:
       - 'apps/mobile/**'
       - 'packages/ui/**'
-      - 'packages/app/**'
+      - 'packages/shared/**'
 
 permissions:
   contents: write

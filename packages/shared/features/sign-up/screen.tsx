@@ -1,5 +1,5 @@
+import { SignUpSignInComponent } from '@/shared/features/sign-in/SignUpSignIn'
 import { YStack } from '@imoblr/ui'
-import { SignUpSignInComponent } from 'app/features/sign-in/SignUpSignIn'
 
 export const SignUpScreen = (): React.ReactNode => {
   return (

@@ -1,5 +1,5 @@
+import { SignUpSignInComponent } from '@/shared/features/sign-in/SignUpSignIn'
 import { YStack, useToastController } from '@imoblr/ui'
-import { SignUpSignInComponent } from 'app/features/sign-in/SignUpSignIn'
 import { useRouter } from 'solito/router'
 
 export const SignInScreen = (): React.ReactNode => {

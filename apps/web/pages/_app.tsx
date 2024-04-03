@@ -13,7 +13,7 @@ import '@tamagui/core/reset.css'
 import '@tamagui/font-inter/css/400.css'
 import '@tamagui/font-inter/css/700.css'
 
-import { Provider } from 'app/provider'
+import { Provider } from '@/shared/provider'
 import { DefaultSeo } from 'next-seo'
 import Head from 'next/head'
 import type { SolitoAppProps } from 'solito'
