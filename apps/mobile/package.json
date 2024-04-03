@@ -19,7 +19,7 @@
     "@babel/runtime": "^7.24.1",
     "@imoblr/ui": "workspace:*",
     "@shopify/flash-list": "^1.6.4",
-    "app": "workspace:*",
+    "@imoblr/shared": "workspace:*",
     "babel-plugin-module-resolver": "^5.0.0",
     "burnt": "^0.12.2",
     "expo": "^50.0.14",

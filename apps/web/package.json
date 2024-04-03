@@ -17,7 +17,7 @@
     "@imoblr/ui": "workspace:*",
     "@tamagui/next-theme": "1.94.1",
     "@tsndr/cloudflare-worker-jwt": "2.5.3",
-    "app": "workspace:*",
+    "@imoblr/shared": "workspace:*",
     "million": "3.0.6",
     "next": "14.1.4",
     "next-seo": "^6.5.0",

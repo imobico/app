@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "@imoblr/shared",
   "version": "2.0.0",
   "main": "index.ts",
   "private": true,
