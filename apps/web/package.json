@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "dev": "bunx --bun next dev",
+    "dev": "bunx --bun next dev --turbo",
     "local-build": "TAMAGUI_TARGET=web bun x @cloudflare/next-on-pages --disable-worker-minification",
     "local-serve": "bun x wrangler pages dev .vercel/output/static --port 3000 --compatibility-date 2023-10-30 --compatibility-flag=nodejs_compat",
     "build": "next build",
