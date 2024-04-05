@@ -47,6 +47,12 @@ const plugins = [
 module.exports = function () {
   /** @type {import('next').NextConfig} */
   let config = {
+    // partial bun runtime fix:
+    // experimental: {
+    //   ...(process.env.NODE_ENV === 'development'
+    //     ? { outputFileTracingRoot: join(__dirname, '../../') }
+    //     : null),
+    // },
     // Uncomment if you want to use Cloudflare's Paid Image Resizing w/ Next/Image
     // images: {
     //   loader: 'custom',
