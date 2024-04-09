@@ -7,10 +7,10 @@
   "module:jsx": "src",
   "files": ["types", "dist"],
   "scripts": {
-    "build": "tamagui-build",
-    "dev": "tamagui-build --watch",
-    "dev:ios": "tamagui-build --watch",
-    "dev:android": "tamagui-build --watch",
+    "build": "bunx tamagui-build",
+    "dev": "bunx tamagui-build --watch",
+    "dev:ios": "bunx tamagui-build --watch",
+    "dev:android": "bunx tamagui-build --watch",
     "clean": "rm -rf dist types node_modules .turbo"
   },
   "dependencies": {

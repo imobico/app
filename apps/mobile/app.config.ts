@@ -8,7 +8,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     },
   },
   owner: process.env.EXPO_PUBLIC_EAS_OWNER,
-  plugins: ['expo-router'],
+  plugins: ['expo-router', 'expo-secure-store'],
   experiments: {
     tsconfigPaths: true,
     typedRoutes: true,

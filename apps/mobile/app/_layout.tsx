@@ -1,6 +1,8 @@
+import { useAuth } from '@/shared/context/auth'
 import { Provider } from '@/shared/provider'
+import { Paragraph } from '@/ui/src'
 import { useFonts } from 'expo-font'
-import { SplashScreen, Stack } from 'expo-router'
+import { SplashScreen, Stack, Tabs } from 'expo-router'
 import { useEffect } from 'react'
 
 export {
@@ -16,6 +18,9 @@ export default function RootLayout() {
     Inter: require('@tamagui/font-inter/otf/Inter-Medium.otf'),
     InterBold: require('@tamagui/font-inter/otf/Inter-Bold.otf'),
   })
+
+  const { state: authState, loaded: authLoaded } = useAuth()
+  const hasValidAuth = !!(authLoaded && !!authState?.refreshToken)
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {
@@ -33,8 +38,16 @@ export default function RootLayout() {
   }
 
   return (
-    <Provider initialSession={null}>
-      <Stack />
+    <Provider>
+      {hasValidAuth ? (
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name='(authenticated)' />
+        </Stack>
+      ) : (
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name='(public)' />
+        </Stack>
+      )}
     </Provider>
   )
 }

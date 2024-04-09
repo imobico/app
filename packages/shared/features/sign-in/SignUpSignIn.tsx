@@ -1,11 +1,22 @@
+import { useAuth } from '@/shared/context/auth'
 import { Button, Input, Paragraph, Stack, XStack, YStack } from '@imoblr/ui'
 import { useState } from 'react'
 import { SolitoImage } from 'solito/image'
 import { Link } from 'solito/link'
+import { useRouter } from 'solito/router'
 
-export const SignUpSignInComponent = (): React.ReactNode => {
+export const SignUpSignInComponent = ({ type }: { type: string }): React.ReactNode => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const router = useRouter()
+  const { onLogin } = useAuth()
+
+  const onButtonPress = async () => {
+    const loginResult = await onLogin(email, password)
+    if (loginResult.ok) {
+      return router.replace('/dashboard')
+    }
+  }
 
   return (
     <YStack
@@ -27,7 +38,7 @@ export const SignUpSignInComponent = (): React.ReactNode => {
         {/* 3 buttons, for google, apple, discord */}
         <Button
           size='$5'
-          onPress={() => {}}
+          onPress={() => { }}
           hoverStyle={{ opacity: 0.8 }}
           focusStyle={{ scale: 0.95 }}
           borderColor='$gray8Light'
@@ -42,7 +53,7 @@ export const SignUpSignInComponent = (): React.ReactNode => {
         </Button>
         <Button
           size='$5'
-          onPress={() => {}}
+          onPress={() => { }}
           hoverStyle={{ opacity: 0.8 }}
           focusStyle={{ scale: 0.95 }}
           borderColor='$gray8Light'
@@ -57,7 +68,7 @@ export const SignUpSignInComponent = (): React.ReactNode => {
         </Button>
         <Button
           size='$5'
-          onPress={() => {}}
+          onPress={() => { }}
           hoverStyle={{ opacity: 0.8 }}
           focusStyle={{ scale: 0.95 }}
           borderColor='$gray8Light'
@@ -100,21 +111,21 @@ export const SignUpSignInComponent = (): React.ReactNode => {
       {/* sign up button */}
       <Button
         themeInverse
-        onPress={() => {}}
+        onPress={() => onButtonPress()}
         hoverStyle={{ opacity: 0.8 }}
-        onHoverIn={() => {}}
-        onHoverOut={() => {}}
+        onHoverIn={() => { }}
+        onHoverOut={() => { }}
         focusStyle={{ scale: 0.975 }}
       >
-        {/* {type === 'sign-up' ? 'Sign up' : 'Sign in'} */}
+        {type === 'sign-up' ? 'Sign up' : 'Sign in'}
       </Button>
 
       {/* or sign in, in small and less opaque font */}
       <XStack>
         <Paragraph size='$2' marginRight='$2' opacity={0.4}>
-          {/* {type === 'sign-up' ? 'Already have an account?' : 'Don’t have an account?'} */}
+          {type === 'sign-up' ? 'Already have an account?' : `Don't have an account?`}
         </Paragraph>
-        <Link href={'/sign-up'}>
+        <Link href={type === 'sign-up' ? '/sign-in' : '/sign-up'}>
           <Paragraph
             cursor={'pointer'}
             size='$2'
@@ -122,7 +133,7 @@ export const SignUpSignInComponent = (): React.ReactNode => {
             opacity={0.5}
             hoverStyle={{ opacity: 0.4 }}
           >
-            {/* {type === 'sign-up' ? 'Sign in' : 'Sign up'} */}
+            {type === 'sign-up' ? 'Sign in' : 'Sign up'}
           </Paragraph>
         </Link>
       </XStack>
