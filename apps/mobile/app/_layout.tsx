@@ -1,6 +1,5 @@
 import { useAuth } from '@/shared/context/auth'
-import { Provider } from '@/shared/provider'
-import { Paragraph } from '@/ui/src'
+import { MobileAuthProvider, Provider } from '@/shared/provider'
 import { useFonts } from 'expo-font'
 import { SplashScreen, Stack, Tabs } from 'expo-router'
 import { useEffect } from 'react'
@@ -38,16 +37,18 @@ export default function RootLayout() {
   }
 
   return (
-    <Provider>
-      {hasValidAuth ? (
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen name='(authenticated)' />
-        </Stack>
-      ) : (
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen name='(public)' />
-        </Stack>
-      )}
-    </Provider>
+    <MobileAuthProvider>
+      <Provider>
+        {hasValidAuth ? (
+          <Stack screenOptions={{ headerShown: false }}>
+            <Stack.Screen name='(authenticated)' />
+          </Stack>
+        ) : (
+          <Stack screenOptions={{ headerShown: false }}>
+            <Stack.Screen name='(public)' />
+          </Stack>
+        )}
+      </Provider>
+    </MobileAuthProvider>
   )
 }

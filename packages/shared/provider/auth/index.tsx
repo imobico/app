@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
       if (!storedSession) return
       const decodedStoredSession = JSON.parse(storedSession) as SecureStoreData
       const refreshTokenIsValid = isValidToken(decodedStoredSession.refreshToken)
-      console.log("onSessionLoad", { refreshTokenIsValid })
+      console.log('onSessionLoad', { refreshTokenIsValid })
       if (!refreshTokenIsValid) return await onRefreshTokenExpired()
       setAuthState({
         accessToken: decodedStoredSession.accessToken,
@@ -57,13 +57,13 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
   }
 
   const onAccessTokenExpired = async () => {
-    console.log("onAccessTokenExpired", { refreshToken: authState.refreshToken })
+    console.log('onAccessTokenExpired', { refreshToken: authState.refreshToken })
     const resp = await refreshTokens(authState.refreshToken)
-    console.log("onAccessTokenExpired->refreshTokens", { resp })
+    console.log('onAccessTokenExpired->refreshTokens', { resp })
     if (!resp.ok) return await onRefreshTokenExpired()
     const session = {
       accessToken: resp.accessToken,
-      refreshToken: resp.refreshToken
+      refreshToken: resp.refreshToken,
     }
     await SecureStore.setItemAsync(SESSION_STORAGE_KEY, JSON.stringify(session))
     setAuthState(session)
@@ -71,7 +71,7 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
   }
 
   const onRefreshTokenExpired = async () => {
-    console.log("onRefreshTokenExpired")
+    console.log('onRefreshTokenExpired')
     await SecureStore.deleteItemAsync(SESSION_STORAGE_KEY)
     setAuthState({})
     return router.replace('/')
