@@ -21,7 +21,7 @@
     "fix": "bunx @biomejs/biome check --apply-unsafe ./packages ./apps",
     "deps:update": "bun npm-check-updates -ui -ws",
     "postinstall": "bun run build && bun check-deps && bun format",
-    "clean": "git clean -xdf node_modules && rm -f bun.lockb && rm -rf ./apps/web/.next && rm -rf ./apps/web/.tamagui && rm -rf ./apps/web/node_modules && rm -rf ./packages/ui/dist"
+    "clean": "git clean -xdf node_modules && rm -f bun.lockb && rm -rf ./apps/web/{.next,.tamagui,node_modules} && rm -rf ./packages/ui/dist"
   },
   "workspaces": [
     "apps/*",

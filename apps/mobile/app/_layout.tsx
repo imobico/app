@@ -1,5 +1,6 @@
 import { useAuth } from '@/shared/context/auth'
-import { MobileAuthProvider, Provider } from '@/shared/provider'
+import { Provider } from '@/shared/provider'
+import { AuthProvider as MobileAuthProvider } from '@/shared/provider/auth'
 import { useFonts } from 'expo-font'
 import { SplashScreen, Stack, Tabs } from 'expo-router'
 import { useEffect } from 'react'

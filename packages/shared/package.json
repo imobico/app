@@ -3,9 +3,7 @@
   "version": "2.0.0",
   "main": "index.ts",
   "private": true,
-  "sideEffects": [
-    "*.css"
-  ],
+  "sideEffects": ["*.css"],
   "scripts": {
     "clean": "rm -rf node_modules"
   },

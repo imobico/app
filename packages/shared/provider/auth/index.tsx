@@ -1,4 +1,4 @@
-import { AuthContext, AuthPropsState, SecureStoreData } from '@/shared/context/auth'
+import { AuthContext, type AuthPropsState, type SecureStoreData } from '@/shared/context/auth'
 import { isValidToken } from '@/shared/lib/jwt'
 import { refreshTokens } from '@/shared/lib/token'
 import * as SecureStore from 'expo-secure-store'

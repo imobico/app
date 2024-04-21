@@ -5,8 +5,6 @@ import { TamaguiProvider } from './tamagui'
 import { TamaguiThemeProvider } from './theme'
 import { ToastViewport } from './toast-viewport'
 
-export { AuthProvider as MobileAuthProvider } from './auth'
-
 export function Provider({
   children,
 }: {
