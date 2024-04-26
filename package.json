@@ -9,7 +9,7 @@
     "dev:ios": "bun turbo dev:ios --parallel --filter={@imoblr/mobile-app,@imoblr/ui}",
     "dev:android": "bun turbo dev:android --parallel --filter={@imoblr/mobile-app,@imoblr/ui}",
     "build": "cd packages/ui && tamagui-build",
-    "build:web": "bun turbo build --parallel --filter={@imoblr/web-app,@imoblr/ui,@repo/config}",
+    "build:web": "bun build --parallel --filter={@imoblr/web-app,@imoblr/ui,@repo/config}",
     "build:ios": "cd apps/mobile && bun build:ios",
     "build:android": "cd apps/mobile && bun build:android",
     "build:ios:preview": "cd apps/mobile && bun build:ios:preview",

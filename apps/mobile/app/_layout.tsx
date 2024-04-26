@@ -1,6 +1,6 @@
-import { useAuth } from '@/shared/context/auth'
+import { useSession } from '@/shared/context/auth'
 import { Provider } from '@/shared/provider'
-import { AuthProvider as MobileAuthProvider } from '@/shared/provider/auth'
+import { SessionProvider } from '@/shared/provider/session/index.native'
 import { useFonts } from 'expo-font'
 import { SplashScreen, Stack, Tabs } from 'expo-router'
 import { useEffect } from 'react'
@@ -19,8 +19,8 @@ export default function RootLayout() {
     InterBold: require('@tamagui/font-inter/otf/Inter-Bold.otf'),
   })
 
-  const { state: authState, loaded: authLoaded } = useAuth()
-  const hasValidAuth = !!(authLoaded && !!authState?.refreshToken)
+  const { data: authState, status: sessionStatus } = useSession()
+  const hasValidAuth = !!(sessionStatus !== 'loading' && !!authState?.refreshToken)
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {
@@ -38,7 +38,7 @@ export default function RootLayout() {
   }
 
   return (
-    <MobileAuthProvider>
+    <SessionProvider>
       <Provider>
         {hasValidAuth ? (
           <Stack screenOptions={{ headerShown: false }}>
@@ -50,6 +50,6 @@ export default function RootLayout() {
           </Stack>
         )}
       </Provider>
-    </MobileAuthProvider>
+    </SessionProvider>
   )
 }

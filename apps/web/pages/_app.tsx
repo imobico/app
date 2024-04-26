@@ -14,9 +14,13 @@ import '@tamagui/font-inter/css/400.css'
 import '@tamagui/font-inter/css/700.css'
 
 import { Provider } from '@/shared/provider'
+import { type Session, SessionProvider } from '@/shared/provider/session'
 import { DefaultSeo } from 'next-seo'
 import Head from 'next/head'
+import { StrictMode } from 'react'
 import type { SolitoAppProps } from 'solito'
+
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 if (process.env.NODE_ENV === 'production') {
   require('../public/tamagui.css')
@@ -29,9 +33,13 @@ const T4App = ({ Component, pageProps }: SolitoAppProps<{ initialSession: Sessio
   return (
     <>
       <Metadata />
-      <Provider initialSession={pageProps.initialSession}>
-        <Component {...pageProps} />
-      </Provider>
+      <StrictMode>
+        <SessionProvider>
+          <Provider>
+            <Component {...pageProps} />
+          </Provider>
+        </SessionProvider >
+      </StrictMode>
     </>
   )
 }

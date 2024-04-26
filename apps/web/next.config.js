@@ -44,7 +44,7 @@ const plugins = [
   }),
 ]
 
-module.exports = function () {
+module.exports = () => {
   /** @type {import('next').NextConfig} */
   let config = {
     // partial bun runtime fix:
@@ -59,7 +59,9 @@ module.exports = function () {
     //   loaderFile: './cfImageLoader.js',
     // },
     // Using Solito image loader without Cloudflare's Paid Image Resizing
-    images: {},
+    images: {
+      path: '/',
+    },
     typescript: {
       ignoreBuildErrors: true,
     },

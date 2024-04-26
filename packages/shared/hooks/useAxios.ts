@@ -1,9 +1,9 @@
 import { AxiosInstance } from '@/shared/lib/axios'
 import { useEffect } from 'react'
-import { useAuth } from '../context/auth'
+import { useSession } from '../context/auth'
 
 export const useAxios = () => {
-  const { state: authState, onAccessTokenExpired, onRefreshTokenExpired } = useAuth()
+  const { data: authState, update, signOut } = useSession()
 
   useEffect(() => {
     const requestIntercept = AxiosInstance.interceptors.request.use(
@@ -21,10 +21,10 @@ export const useAxios = () => {
       (response) => response,
       async (error) => {
         const prevRequest = error.config
-        if (error.response.status === 403) return await onRefreshTokenExpired()
+        if (error.response.status === 403) return await signOut()
         if (error.response.status === 401 && !prevRequest.sent) {
           prevRequest.sent = true
-          const newTokens = await onAccessTokenExpired()
+          const newTokens = await update()
           console.log('responseIntercept', { newTokens })
           prevRequest.headers.Authorization = `Bearer ${newTokens?.accessToken}`
           return AxiosInstance(prevRequest)
@@ -37,7 +37,7 @@ export const useAxios = () => {
       AxiosInstance.interceptors.request.eject(requestIntercept)
       AxiosInstance.interceptors.response.eject(responseIntercept)
     }
-  }, [authState, onRefreshTokenExpired, onAccessTokenExpired])
+  }, [authState, signOut, update])
 
   return { axios: AxiosInstance }
 }

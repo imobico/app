@@ -11,13 +11,12 @@ export interface SecureStoreData extends AuthPropsState {
 }
 
 export interface AuthProps {
-  loaded: boolean
-  state?: AuthPropsState
-  onLogin: (email: string, password: string) => Promise<any>
-  onLogout: () => Promise<any>
-  onAccessTokenExpired: () => Promise<any>
-  onRefreshTokenExpired: () => Promise<any>
+  status: 'loading' | 'authenticated' | 'unauthenticated'
+  data?: AuthPropsState
+  signIn: (email: string, password: string) => Promise<any>
+  signOut: (deleteOnServer?: boolean) => Promise<any>
+  update: () => Promise<any>
 }
 
-export const AuthContext = createContext<AuthProps>({} as AuthProps)
-export const useAuth = () => useContext(AuthContext)
+export const SessionContext = createContext<AuthProps>({} as AuthProps)
+export const useSession = () => useContext(SessionContext)

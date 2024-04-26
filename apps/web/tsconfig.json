@@ -1,12 +1,25 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "baseUrl": ".",
     "paths": {
-      "react-native": ["react-native-web-lite"],
-      "@/shared/*": ["../../packages/shared/*"],
-      "@/ui/*": ["../../packages/ui/*"]
+      "react-native": [
+        "react-native-web-lite"
+      ],
+      "@/shared/*": [
+        "../../packages/shared/*"
+      ],
+      "@/ui/*": [
+        "../../packages/ui/*"
+      ],
+      "@/auth": [
+        "./auth"
+      ]
     },
     "allowJs": true,
     "skipLibCheck": true,
@@ -37,6 +50,13 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

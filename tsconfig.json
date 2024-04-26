@@ -3,8 +3,18 @@
     "strictNullChecks": true,
     "noUncheckedIndexedAccess": true,
     "paths": {
-      "@/shared/*": ["./packages/shared/*"],
-      "@/ui/*": ["./packages/ui/*"]
+      "@/shared/*": [
+        "./packages/shared/*"
+      ],
+      "@/ui/*": [
+        "./packages/ui/*"
+      ],
+      "@/hooks/*": [
+        "./packages/shared/hooks/*"
+      ],
+      "@/types/*": [
+        "./packages/shared/types/*"
+      ]
     },
     "plugins": [
       {

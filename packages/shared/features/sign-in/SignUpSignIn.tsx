@@ -1,4 +1,4 @@
-import { useAuth } from '@/shared/context/auth'
+import { signIn, useSession } from '@/shared/provider/session'
 import { Button, Input, Paragraph, Stack, XStack, YStack } from '@imoblr/ui'
 import { useState } from 'react'
 import { SolitoImage } from 'solito/image'
@@ -8,13 +8,20 @@ import { useRouter } from 'solito/router'
 export const SignUpSignInComponent = ({ type }: { type: string }): React.ReactNode => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const { data: session }: { data: any } = useSession()
   const router = useRouter()
-  const { onLogin } = useAuth()
 
   const onButtonPress = async () => {
-    const loginResult = await onLogin(email, password)
-    if (loginResult.ok) {
-      return router.replace('/dashboard')
+    const signInResponse = await signIn(
+      'credentials',
+      { email, password, redirect: false }
+    )
+
+    if (signInResponse?.error) {
+      alert(signInResponse?.error)
+    } else {
+      // router.push(callbackUrl)
+      router.push('/app')
     }
   }
 
@@ -31,14 +38,14 @@ export const SignUpSignInComponent = ({ type }: { type: string }): React.ReactNo
       backgroundColor='$background'
     >
       <Paragraph size='$5' fontWeight={'700'} opacity={0.8} marginBottom='$1'>
-        {/* {type === 'sign-up' ? 'Create your account' : 'Sign in to your account'} */}
+        {type === 'sign-up' ? 'Create your account' : 'Sign in to your account'}
       </Paragraph>
       {/* all the oauth sign up options */}
-      <XStack space justifyContent={'space-evenly'} theme='light'>
+      <XStack space justifyContent={'space-evenly'}>
         {/* 3 buttons, for google, apple, discord */}
         <Button
           size='$5'
-          onPress={() => {}}
+          onPress={() => { }}
           hoverStyle={{ opacity: 0.8 }}
           focusStyle={{ scale: 0.95 }}
           borderColor='$gray8Light'
@@ -53,7 +60,7 @@ export const SignUpSignInComponent = ({ type }: { type: string }): React.ReactNo
         </Button>
         <Button
           size='$5'
-          onPress={() => {}}
+          onPress={() => { }}
           hoverStyle={{ opacity: 0.8 }}
           focusStyle={{ scale: 0.95 }}
           borderColor='$gray8Light'
@@ -68,7 +75,7 @@ export const SignUpSignInComponent = ({ type }: { type: string }): React.ReactNo
         </Button>
         <Button
           size='$5'
-          onPress={() => {}}
+          onPress={() => { }}
           hoverStyle={{ opacity: 0.8 }}
           focusStyle={{ scale: 0.95 }}
           borderColor='$gray8Light'
@@ -113,8 +120,8 @@ export const SignUpSignInComponent = ({ type }: { type: string }): React.ReactNo
         themeInverse
         onPress={() => onButtonPress()}
         hoverStyle={{ opacity: 0.8 }}
-        onHoverIn={() => {}}
-        onHoverOut={() => {}}
+        onHoverIn={() => { }}
+        onHoverOut={() => { }}
         focusStyle={{ scale: 0.975 }}
       >
         {type === 'sign-up' ? 'Sign up' : 'Sign in'}
@@ -139,7 +146,7 @@ export const SignUpSignInComponent = ({ type }: { type: string }): React.ReactNo
       </XStack>
 
       {/* forgot password */}
-      {/* {type === 'sign-in' && (
+      {type === 'sign-in' && (
         <XStack marginTop='$-2.5'>
           <Paragraph size='$2' marginRight='$2' opacity={0.4}>
             Forgot your password?
@@ -156,7 +163,7 @@ export const SignUpSignInComponent = ({ type }: { type: string }): React.ReactNo
             </Paragraph>
           </Link>
         </XStack>
-      )} */}
+      )}
     </YStack>
   )
 }
