@@ -12,7 +12,7 @@ export const useCurrentUser = () => {
     queryFn: async (): Promise<User> => {
       const { data: currentUserData } = await axios.get('/profile')
       return currentUserData.data as User
-    }
+    },
   })
 }
 

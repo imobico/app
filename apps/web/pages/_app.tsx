@@ -38,7 +38,7 @@ const T4App = ({ Component, pageProps }: SolitoAppProps<{ initialSession: Sessio
           <Provider>
             <Component {...pageProps} />
           </Provider>
-        </SessionProvider >
+        </SessionProvider>
       </StrictMode>
     </>
   )

@@ -13,10 +13,11 @@ import {
 } from '@imoblr/ui'
 import { ThemeToggle } from '@imoblr/ui/src/ThemeToggle'
 import { ChevronDown } from '@tamagui/lucide-icons'
-import React, { useState } from 'react'
+import type React from 'react'
+import { useState } from 'react'
 import { Linking } from 'react-native'
 import { SolitoImage } from 'solito/image'
-import { useLink } from 'solito/link'
+import { useLink } from 'solito/navigation'
 
 import { useSheetOpen } from '../../atoms/sheet'
 

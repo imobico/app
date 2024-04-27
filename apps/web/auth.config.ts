@@ -19,7 +19,7 @@ export default {
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials): Promise<SignInResponse | null> {
-        console.log("calling authorize")
+        console.log('calling authorize')
         try {
           const res = await axios.post('/signin', {
             email: credentials?.email,
@@ -38,7 +38,7 @@ export default {
   ],
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
-      console.log("calling authorized")
+      console.log('calling authorized')
 
       const isLoggedIn = !!auth?.user
       const isPrivatePath = nextUrl.pathname.startsWith('/app')
@@ -62,7 +62,7 @@ export default {
       profile?: Profile | undefined
       isNewUser?: boolean | undefined
     }): Promise<JWT | null> {
-      console.log("calling jwt")
+      console.log('calling jwt')
 
       if (trigger === 'update' && session.user) {
         return { ...token, ...session.user }
@@ -91,7 +91,7 @@ export default {
       return token
     },
     async session({ session, token }: { session: Session; token: JWT }): Promise<Session> {
-      console.log("calling session")
+      console.log('calling session')
 
       return {
         ...session,
@@ -106,5 +106,5 @@ export default {
     strategy: 'jwt',
     maxAge: 180,
     updateAge: 0,
-  }
+  },
 } satisfies NextAuthConfig
