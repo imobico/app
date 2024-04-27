@@ -20,9 +20,11 @@ export default function AppHome() {
   const { data: currentUserData } = useCurrentUser()
   const greeting = getGreeting()
 
+  console.log(currentUserData)
+
   return (
     <>
-      Logged {greeting} {currentUserData.user}
+      Logged {greeting} {currentUserData?.user}
     </>
   )
 }
