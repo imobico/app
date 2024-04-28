@@ -1,28 +1,32 @@
-import { CustomToast, ToastProvider } from '@imoblr/ui'
-import { SafeAreaProvider } from './safe-area'
-import { SolitoImageProvider } from './solito-image'
-import { TamaguiProvider } from './tamagui'
-import { TamaguiThemeProvider } from './theme'
-import { ToastViewport } from './toast-viewport'
+import { CustomToast, TamaguiProvider, type TamaguiProviderProps, ToastProvider, config } from '@imoblr/ui'
+import { useColorScheme } from 'react-native'
 
-export function Provider({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+import { ToastViewport } from './ToastViewport'
+
+export function Provider({ children, ...rest }: Omit<TamaguiProviderProps, 'config'>) {
+  const scheme = useColorScheme()
   return (
-    <TamaguiThemeProvider>
-      <TamaguiProvider>
-        <SafeAreaProvider>
-          <SolitoImageProvider>
-            <ToastProvider swipeDirection='horizontal' duration={6000} native={['mobile']}>
-              {children}
-              <CustomToast />
-              <ToastViewport />
-            </ToastProvider>
-          </SolitoImageProvider>
-        </SafeAreaProvider>
-      </TamaguiProvider>
-    </TamaguiThemeProvider>
+    <TamaguiProvider
+      config={config}
+      disableInjectCSS
+      defaultTheme={scheme === 'dark' ? 'dark' : 'light'}
+      {...rest}
+    >
+      <ToastProvider
+        swipeDirection="horizontal"
+        duration={6000}
+        native={
+          [
+            /* uncomment the next line to do native toasts on mobile. NOTE: it'll require you making a dev build and won't work with Expo Go */
+            // 'mobile'
+          ]
+        }
+      >
+        {children}
+
+        <CustomToast />
+        <ToastViewport />
+      </ToastProvider>
+    </TamaguiProvider>
   )
 }

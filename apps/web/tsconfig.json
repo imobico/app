@@ -5,8 +5,9 @@
     "baseUrl": ".",
     "paths": {
       "react-native": ["react-native-web-lite"],
-      "@/shared/*": ["../../packages/shared/*"],
-      "@/ui/*": ["../../packages/ui/*"]
+      "@imoblr/shared/*": ["../../packages/shared/*"],
+      "@imoblr/ui/*": ["../../packages/ui/*"],
+      "@imoblr/auth": ["./auth/*"]
     },
     "allowJs": true,
     "skipLibCheck": true,

@@ -2,113 +2,74 @@ import {
   Anchor,
   Button,
   H1,
-  H3,
   Paragraph,
-  ScrollView,
   Separator,
   Sheet,
+  useToastController,
   XStack,
   YStack,
-  useToastController,
 } from '@imoblr/ui'
-import { ThemeToggle } from '@imoblr/ui/src/ThemeToggle'
-import { ChevronDown } from '@tamagui/lucide-icons'
-import React, { useState } from 'react'
-import { Linking } from 'react-native'
-import { SolitoImage } from 'solito/image'
+import { ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
+import { useState } from 'react'
 import { useLink } from 'solito/navigation'
 
-import { useSheetOpen } from '../../atoms/sheet'
-
 export function HomeScreen() {
-  const toast = useToastController()
-
-  const signInLink = useLink({ href: '/sign-in' })
-
-  const signUpLink = useLink({
-    href: '/sign-up',
-  })
-
-  const paramsLink = useLink({
-    href: '/params/tim',
+  const linkProps = useLink({
+    href: '/user/nate',
   })
 
   return (
-    <ScrollView>
-      <YStack flex={1} jc='center' ai='center' p='$4' space='$4' backgroundColor='red'>
-        <SolitoImage src='/t4-logo.png' width={128} height={128} alt='T4 Logo' />
-        <H1 textAlign='center'>👋 Hello, T4 App</H1>
+    <YStack f={1} jc="center" ai="center" p="$4" gap="$4">
+      <YStack gap="$4" bc="$background">
+        <H1 ta="center">Welcome to Tamagui.</H1>
+        <Paragraph ta="center">
+          Here's a basic starter to show navigating from one screen to another. This screen uses the
+          same code on Next.js and React Native.
+        </Paragraph>
+
         <Separator />
-        <Paragraph textAlign='center' size={'$2'}>
-          Unifying React Native + Web. hehehe
-        </Paragraph>
-        <Paragraph textAlign='center' size={'$2'}>
-          The T4 Stack is made by{' '}
-          <Anchor href='https://twitter.com/ogtimothymiller' target='_blank'>
-            Tim Miller
+        <Paragraph ta="center">
+          Made by{' '}
+          <Anchor color="$color12" href="https://twitter.com/natebirdman" target="_blank">
+            @natebirdman
           </Anchor>
-          , give it a star{' '}
-          <Anchor href='https://github.com/timothymiller/t4-app' target='_blank' rel='noreferrer'>
-            on Github.
-          </Anchor>
-        </Paragraph>
-        <Paragraph textAlign='center' size={'$2'}>
-          Tamagui is made by{' '}
-          <Anchor href='https://twitter.com/natebirdman' target='_blank'>
-            Nate Weinert
-          </Anchor>
-          , give it a star{' '}
-          <Anchor href='https://github.com/tamagui/tamagui' target='_blank' rel='noreferrer'>
-            on Github.
-          </Anchor>
-        </Paragraph>
-
-        <XStack gap='$5'>
-          <Button onPress={() => Linking.openURL('https://t4stack.com/')}>Learn More...</Button>
-          <ThemeToggle />
-        </XStack>
-
-        <H3>🦮🐴 App Demos</H3>
-        <YStack space='$2'>
-          <Button {...paramsLink} space='$2'>
-            Params
-          </Button>
-          <Button
-            onPress={() => {
-              toast.show('Hello world!', {
-                message: 'Description here',
-              })
-            }}
+          ,{' '}
+          <Anchor
+            color="$color12"
+            href="https://github.com/tamagui/tamagui"
+            target="_blank"
+            rel="noreferrer"
           >
-            Show Toast
-          </Button>
-          <SheetDemo />
-        </YStack>
-
-        <XStack space='$2'>
-          <Button {...signInLink} space='$2'>
-            Sign In
-          </Button>
-          <Button {...signUpLink} space='$2'>
-            Sign Up
-          </Button>
-        </XStack>
+            give it a ⭐️
+          </Anchor>
+        </Paragraph>
       </YStack>
-    </ScrollView>
+
+      <XStack>
+        <Button {...linkProps}>Link to user</Button>
+      </XStack>
+
+      <SheetDemo />
+    </YStack>
   )
 }
 
-const SheetDemo = (): React.ReactNode => {
-  const [open, setOpen] = useSheetOpen()
+function SheetDemo() {
+  const [open, setOpen] = useState(false)
   const [position, setPosition] = useState(0)
+  const toast = useToastController()
 
   return (
     <>
-      <Button onPress={() => setOpen((x) => !x)} space='$2'>
-        Bottom Sheet
-      </Button>
+      <Button
+        size="$6"
+        icon={open ? ChevronDown : ChevronUp}
+        circular
+        onPress={() => setOpen((x) => !x)}
+      />
       <Sheet
         modal
+        animation="medium"
         open={open}
         onOpenChange={setOpen}
         snapPoints={[80]}
@@ -116,15 +77,18 @@ const SheetDemo = (): React.ReactNode => {
         onPositionChange={setPosition}
         dismissOnSnapToBottom
       >
-        <Sheet.Overlay />
-        <Sheet.Frame alignItems='center' justifyContent='center'>
+        <Sheet.Overlay animation="lazy" enterStyle={{ opacity: 0 }} exitStyle={{ opacity: 0 }} />
+        <Sheet.Frame ai="center" jc="center">
           <Sheet.Handle />
           <Button
-            size='$6'
+            size="$6"
             circular
             icon={ChevronDown}
             onPress={() => {
               setOpen(false)
+                toast.show('Sheet closed!', {
+                  message: 'Just showing how toast works...',
+                })
             }}
           />
         </Sheet.Frame>

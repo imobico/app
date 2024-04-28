@@ -5,8 +5,9 @@
     "noUncheckedIndexedAccess": true,
     "baseUrl": ".",
     "paths": {
-      "@/shared/*": ["../../packages/shared/*"],
-      "@/ui/*": ["../../packages/ui/*"]
+      "@imoblr/shared/*": ["../../packages/shared/*"],
+      "@imoblr/ui/*": ["../../packages/ui/*"],
+      "@imoblr/auth": ["../../packages/auth/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]

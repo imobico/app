@@ -1,33 +1,12 @@
 'use client'
 
-import { Provider } from '@/shared/provider'
-import '@tamagui/core/reset.css'
-import '@tamagui/font-inter/css/400.css'
-import '@tamagui/font-inter/css/700.css'
-import { StyleSheet } from 'react-native'
-import Tamagui from '../tamagui.config'
+import { TamaguiProvider } from './TamaguiProvider'
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  // @ts-ignore
-  const rnwStyle = StyleSheet.getSheet()
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en'>
-      <style dangerouslySetInnerHTML={{ __html: rnwStyle.textContent }} id={rnwStyle.id} />
-      <style
-        key='tamagui-css'
-        dangerouslySetInnerHTML={{
-          __html: Tamagui.getCSS({
-            exclude: process.env.NODE_ENV === 'development' ? null : 'design-system',
-          }),
-        }}
-      />
+    <html lang="en">
       <body>
-        <Provider>{children}</Provider>
+        <TamaguiProvider>{children}</TamaguiProvider>
       </body>
     </html>
   )

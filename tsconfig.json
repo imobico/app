@@ -3,13 +3,13 @@
     "strictNullChecks": true,
     "noUncheckedIndexedAccess": true,
     "paths": {
-      "@/shared/*": ["./packages/shared/*"],
-      "@/ui/*": ["./packages/ui/*"]
+      "@imoblr/shared/*": ["./packages/shared/*"],
+      "@imoblr/ui/*": ["./packages/ui/*"]
     },
     "plugins": [
       {
         "name": "@nderscore/tamagui-typescript-plugin",
-        "pathToApp": "apps/web",
+        "pathToApp": "apps/next",
         "defaultTheme": "light",
         "colorTileSize": 18,
         "completionFilters": {
@@ -20,5 +20,13 @@
       }
     ]
   },
-  "extends": "expo/tsconfig.base"
+  "extends": "expo/tsconfig.base",
+  "exclude": [
+    "**/node_modules",
+    "**/dist",
+    "**/types",
+    "apps/web/out",
+    "apps/web/.next",
+    "apps/web/.tamagui"
+  ]
 }

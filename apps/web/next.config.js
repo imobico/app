@@ -1,16 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 const { withTamagui } = require('@tamagui/next-plugin')
-const { join } = require('path')
-const million = require('million/compiler')
-const pattycake = require('pattycake')
-const withPWA = require('@ducanh2912/next-pwa').default({
-  dest: 'public',
-  disable: process.env.NODE_ENV === 'development',
-  register: true,
-  sw: 'service-worker.js',
-  swcMinify: true,
-})
+const { join } = require('node:path')
 
 const boolVals = {
   true: true,
@@ -20,17 +11,9 @@ const boolVals = {
 const disableExtraction =
   boolVals[process.env.DISABLE_EXTRACTION] ?? process.env.NODE_ENV === 'development'
 
-const enableMillionJS =
-  boolVals[process.env.ENABLE_MILLION_JS] ?? process.env.NODE_ENV === 'production'
-
-// Temporarily disabled, produces chatty logs
-const enablePattyCake =
-  boolVals[process.env.ENABLE_PATTY_CAKE] ?? process.env.NODE_ENV === 'production'
-
 const plugins = [
-  withPWA,
   withTamagui({
-    config: './tamagui.config.ts',
+    config: '../../packages/config/src/tamagui.config.ts',
     components: ['tamagui', '@imoblr/ui'],
     importsWhitelist: ['constants.js', 'colors.js'],
     outputCSS: process.env.NODE_ENV === 'production' ? './public/tamagui.css' : null,
@@ -41,25 +24,18 @@ const plugins = [
         return true
       }
     },
+    excludeReactNativeWebExports: ['Switch', 'ProgressBar', 'Picker', 'CheckBox', 'Touchable'],
   }),
 ]
 
-module.exports = function () {
+module.exports = () => {
   /** @type {import('next').NextConfig} */
   let config = {
-    // partial bun runtime fix:
-    // experimental: {
-    //   ...(process.env.NODE_ENV === 'development'
-    //     ? { outputFileTracingRoot: join(__dirname, '../../') }
-    //     : null),
-    // },
-    // Uncomment if you want to use Cloudflare's Paid Image Resizing w/ Next/Image
-    // images: {
-    //   loader: 'custom',
-    //   loaderFile: './cfImageLoader.js',
-    // },
-    // Using Solito image loader without Cloudflare's Paid Image Resizing
-    images: {},
+    eslint: {
+      // Warning: This allows production builds to successfully complete even if
+      // your project has ESLint errors.
+      ignoreDuringBuilds: true,
+    },
     typescript: {
       ignoreBuildErrors: true,
     },
@@ -75,10 +51,10 @@ module.exports = function () {
       'expo-linking',
       'expo-constants',
       'expo-modules-core',
-      'react-native-safe-area-context',
-      'react-native-reanimated',
-      'react-native-gesture-handler',
     ],
+    experimental: {
+      scrollRestoration: true,
+    },
   }
 
   for (const plugin of plugins) {
@@ -86,19 +62,6 @@ module.exports = function () {
       ...config,
       ...plugin(config),
     }
-  }
-
-  const millionConfig = {
-    auto: true,
-    mute: true,
-  }
-
-  if (enableMillionJS) {
-    config = million.next(config, millionConfig)
-  }
-
-  if (enablePattyCake) {
-    config = pattycake.next(config)
   }
 
   return config

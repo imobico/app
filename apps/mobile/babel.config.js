@@ -1,19 +1,23 @@
 module.exports = function (api) {
-  api.cache(true)
+  api.cache(true);
   return {
     presets: [['babel-preset-expo', { jsxRuntime: 'automatic' }]],
     plugins: [
+      require.resolve('expo-router/babel'),
       [
         require.resolve('babel-plugin-module-resolver'),
         {
           root: ['../..'],
           alias: {
+            // define aliases to shorten the import paths
             app: '../../packages/shared',
             '@imoblr/ui': '../../packages/ui',
           },
           extensions: ['.js', '.jsx', '.tsx', '.ios.js', '.android.js'],
         },
       ],
+      // if you want reanimated support
+      // 'react-native-reanimated/plugin',
       ...(process.env.EAS_BUILD_PLATFORM === 'android'
         ? []
         : [
@@ -21,11 +25,10 @@ module.exports = function (api) {
               '@tamagui/babel-plugin',
               {
                 components: ['@imoblr/ui', 'tamagui'],
-                config: './tamagui.config.ts',
+                config: '../../packages/config/src/tamagui.config.ts',
               },
             ],
           ]),
-      'jotai/babel/plugin-react-refresh',
     ],
-  }
-}
+  };
+};

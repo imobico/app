@@ -1,4 +1,4 @@
-import { HomeScreen } from '@/shared/features/home/screen'
+import { HomeScreen } from '@imoblr/shared/features/home/screen'
 import { Stack } from 'expo-router'
 
 export default function Screen() {

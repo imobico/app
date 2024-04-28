@@ -1,42 +1,39 @@
 {
   "expo": {
-    "name": "imoblr",
-    "slug": "imoblr",
-    "scheme": "imoblr",
+    "name": "yourprojectsname",
+    "slug": "yourprojectsname",
+    "scheme": "yourprojectsname",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/splash.png",
+      "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "enabled": false,
-      "url": "https://u.expo.dev/dce7358a-68f2-4690-941b-169757e68b17"
+      "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.imoblr.app"
+      "bundleIdentifier": "com.yourprojectsname.app"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.imoblr.app"
+      "package": "com.yourprojectsname.app"
     },
-    "extra": {
-      "eas": {
-        "projectId": "85fc6ccd-0ce1-4e4d-804c-b15df989f97e"
-      }
+    "web": {
+      "favicon": "./assets/favicon.png"
     },
-    "owner": "timothymiller",
-    "plugins": ["expo-router"],
-    "experiments": {
-      "tsconfigPaths": true,
-      "typedRoutes": true
-    }
+    "plugins": [
+      "expo-router"
+    ]
   }
 }
