@@ -16,6 +16,9 @@ export interface DecodedJWT {
 export const decodeJWT = (jwt: string): DecodedJWT | undefined => {
   if (!jwt) return
   const [header, payload, signature] = jwt.split('.')
+  if (!header) return
+  if (!payload) return
+  if (!signature) return
 
   return {
     header: JSON.parse(atob(header)),
@@ -57,6 +60,13 @@ export const isValidToken = (jwt: string | null, threshold = 1.0): boolean => {
 export const refreshTokenFn = async (currentRefreshToken: string) => {
   if (currentRefreshToken) {
     const opts = { method: 'post', headers: { Authorization: `Bearer ${currentRefreshToken}` } }
-    return fetch(`${process.env.NEXT_PUBLIC_API_URL}/token/refresh`, opts)
+    const resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/token/refresh`, opts)
+    if (resp.ok) {
+      const data = await resp.json()
+      return {
+        refreshToken: data.refresh_token,
+        accessToken: data.access_token
+      }
+    }
   }
 }

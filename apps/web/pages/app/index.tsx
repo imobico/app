@@ -1,4 +1,7 @@
+import { auth } from '@/auth'
 import useCurrentUser from '@/shared/hooks/useCurrentUser'
+import type { NextApiRequest, NextApiResponse } from 'next'
+import { useEffect } from 'react'
 
 const getGreeting = () => {
   const day = new Date()
@@ -18,11 +21,11 @@ export default function AppHome() {
   const { data: currentUserData } = useCurrentUser()
   const greeting = getGreeting()
 
-  console.log(currentUserData)
+  console.log("AppHome", { currentUserData })
 
   return (
     <>
-      Logged {greeting} {currentUserData?.user}
+      Logged {greeting} {JSON.stringify(currentUserData)}
     </>
   )
 }

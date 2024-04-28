@@ -39,6 +39,8 @@ export default class Document extends NextDocument {
   }
 
   render() {
+    console.log('============================ pages/_document RUNNING ==========================')
+
     return (
       <Html>
         <Head>

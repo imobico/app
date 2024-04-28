@@ -9,24 +9,16 @@ import axios from '@/shared/utils/axios'
 
 type CheckTokenResponse = 'unauthorized' | 'update' | 'valid'
 
-const checkTokens = (refreshToken: string | undefined, accessToken: string | undefined): CheckTokenResponse => {
+const checkTokens = (
+  refreshToken: string | undefined,
+  accessToken: string | undefined,
+): CheckTokenResponse => {
   if (!refreshToken) return 'unauthorized'
   const refreshTokenDuration = getTokenDurationInSecs(refreshToken)
   const accessTokenDuration = getTokenDurationInSecs(accessToken)
   if (refreshTokenDuration <= 0) return 'unauthorized'
   if (refreshTokenDuration <= 180 || accessTokenDuration <= 120) return 'update'
   return 'valid'
-}
-
-const updateTokens = async (refreshToken: string) => {
-  if (!refreshToken) return
-  const updateTokenResp = await refreshTokenFn(refreshToken)
-  if (!updateTokenResp || updateTokenResp.status !== 201) throw new AuthError('Session update error')
-  const updateTokens = await updateTokenResp.json()
-  return {
-    accessToken: updateTokens.access_token,
-    refreshToken: updateTokens.refresh_token
-  }
 }
 
 export default {
@@ -61,7 +53,8 @@ export default {
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user
-      const isPrivatePath = nextUrl.pathname.startsWith('/app') || nextUrl.pathname.startsWith('/dashboard')
+      const isPrivatePath =
+        nextUrl.pathname.startsWith('/app') || nextUrl.pathname.startsWith('/dashboard')
       if (isPrivatePath && isLoggedIn) return true
       if (isPrivatePath) return false
 
@@ -82,63 +75,43 @@ export default {
       profile?: Profile | undefined
       isNewUser?: boolean | undefined
     }): Promise<JWT | null> {
-      if (trigger === 'update' && session.user) {
-        return { ...token, ...session.user }
+      if (session?.forceUpdate) {
+        const refreshToken = token?.refreshToken as string
+        const updatedTokens = await refreshTokenFn(refreshToken)
+        if (updatedTokens) return { ...token, ...session.user, ...updatedTokens }
+        throw new AuthError('authentication token expired')
       }
 
-      if (user && account) {
+      if (trigger === 'signIn' && user && account) {
         token = user.data?.user
         token.accessToken = user.access_token
         token.refreshToken = user.refresh_token
         return token
       }
 
-      const refreshToken = token?.refreshToken as string
-      if (refreshToken) {
-        const decodedRefreshToken = decodeJWT(refreshToken)
-        if (!decodedRefreshToken) throw new AuthError('Invalid refresh token')
-        const refreshExpiresAt = decodedRefreshToken.payload.exp
-        const refreshIssuedAt = decodedRefreshToken.payload.iat
-        const totalSessionTime = refreshExpiresAt - refreshIssuedAt
-        const nowUnix = (Date.now() / 1000) as number
-        const elapsedTime = nowUnix - refreshIssuedAt
-        const sessionLimit = totalSessionTime * 0.5
-        if (elapsedTime >= sessionLimit) {
-          const updatedTokens = await refreshTokenFn(refreshToken)
-          return { ...token, updatedTokens }
-        }
+      const refreshToken = token?.refreshToken as string | undefined
+      const accessToken = token?.accessToken as string | undefined
+
+      if (!refreshToken) throw new AuthError('invalid authentication token')
+
+      const decodedRefreshToken = decodeJWT(refreshToken)
+      if (!decodedRefreshToken) throw new AuthError('invalid authentication token')
+
+      const refreshExpiresAt = decodedRefreshToken.payload.exp
+      if (!refreshExpiresAt) throw new AuthError('invalid authentication token')
+
+      const nowUnix = (Date.now() / 1000) as number
+      const remaingSeconds = Math.max(refreshExpiresAt - nowUnix, 0)
+      if (remaingSeconds === 0) throw new AuthError('authentication token expired')
+      if (remaingSeconds <= 60) {
+        const updatedTokens = await refreshTokenFn(refreshToken)
+        if (!updatedTokens) throw new AuthError('refresh token error')
+        return { ...token, updatedTokens }
       }
 
       return token
-
-      // console.log('calling jwt')
-
-      // if (trigger === 'signIn' && user && account) {
-      //   token = user?.data?.user
-      //   token.accessToken = user?.access_token
-      //   token.refreshToken = user?.refresh_token
-      //   return token
-      // }
-
-      // const refreshToken = session?.user?.refreshToken || token?.refreshToken
-      // const accessToken = session?.user?.accessToken || token?.accessToken
-      // const checkTokenResp = checkTokens(refreshToken, accessToken)
-
-      // if (checkTokenResp === 'unauthorized') throw new AuthError('Invalid session')
-      // if (trigger === 'update' && session?.user || checkTokenResp === 'update') {
-      //   const newTokens = await updateTokens(refreshToken)
-      //   return {
-      //     ...token,
-      //     ...session?.user,
-      //     ...newTokens
-      //   }
-      // }
-
-      // return token
     },
     async session({ session, token }: { session: Session; token: JWT }): Promise<Session> {
-      console.log('calling session')
-
       return {
         ...session,
         user: {

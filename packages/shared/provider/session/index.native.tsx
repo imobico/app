@@ -11,7 +11,7 @@ const __IMOBLR_SESSION = {
   _session: undefined,
   _router: undefined,
   _lastSync: 0,
-  _setSession: () => { },
+  _setSession: () => {},
 } as {
   _session: Session | null | undefined
   _router: any
@@ -184,7 +184,7 @@ export function SessionProvider(props: SessionProviderProps) {
     return () => {
       __IMOBLR_SESSION._lastSync = 0
       __IMOBLR_SESSION._session = undefined
-      __IMOBLR_SESSION._getSession = () => { }
+      __IMOBLR_SESSION._getSession = () => {}
     }
   }, [])
 

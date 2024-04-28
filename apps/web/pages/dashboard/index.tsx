@@ -1,6 +1,8 @@
 import { auth } from '@/auth'
+import useCurrentUser from '@/shared/hooks/useCurrentUser'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import type { Session } from 'next-auth'
+import { useEffect } from 'react'
 
 const getGreeting = () => {
   const day = new Date()
@@ -16,28 +18,15 @@ const getGreeting = () => {
   return 'Boa noite'
 }
 
-export default function AppHome({ session }: { session: Session }) {
-  console.log("Dashboard", session)
-
-  // const { data: currentUserData } = useCurrentUser()
-  // console.log(currentUserData)
-
+export default function DashboardIndex() {
+  const { data: currentUserData } = useCurrentUser()
   const greeting = getGreeting()
+
+  console.log("DashboardIndex", { currentUserData })
 
   return (
     <>
-      Logged {greeting} {session?.user}
+      Logged {greeting} {JSON.stringify(currentUserData)}
     </>
   )
-}
-
-export async function getServerSideProps({ req, res }: { req: NextApiRequest, res: NextApiResponse }) {
-  const session = await auth(req, res)
-  console.log("getServerSideProps", { session })
-
-  return {
-    props: {
-      session,
-    },
-  }
 }
