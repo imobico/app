@@ -26,7 +26,16 @@ export const decodeJWT = (jwt: string): DecodedJWT | undefined => {
 
 export const refreshSessionInterval = (): number => {
   const refetchFromEnv = process.env.REFETCH_SESSION_INTERVAL
-  return refetchFromEnv ? parseInt(refetchFromEnv, 10) : 60
+  return refetchFromEnv ? Number.parseInt(refetchFromEnv, 10) : 60
+}
+
+export const getTokenDurationInSecs = (jwt): number => {
+  if (!jwt) return 0
+  const decodedToken = decodeJWT(jwt)
+  if (!decodedToken) return 0
+  const nowUnix = Math.trunc(Date.now() / 1000) as number
+  const expiresAt = decodedToken.payload.exp
+  return Math.max(expiresAt - nowUnix, 0)
 }
 
 export const isValidToken = (jwt: string | null, threshold = 1.0): boolean => {
@@ -48,6 +57,6 @@ export const isValidToken = (jwt: string | null, threshold = 1.0): boolean => {
 export const refreshTokenFn = async (currentRefreshToken: string) => {
   if (currentRefreshToken) {
     const opts = { method: 'post', headers: { Authorization: `Bearer ${currentRefreshToken}` } }
-    return fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/token/refresh`, opts)
+    return fetch(`${process.env.NEXT_PUBLIC_API_URL}/token/refresh`, opts)
   }
 }

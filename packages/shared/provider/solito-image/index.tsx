@@ -1,7 +1,7 @@
 import { SolitoImageProvider as SolitoImageProviderOG } from 'solito/image'
 
 export const getImageUrl = () => {
-  const imageUrl = `${process.env.EXPO_PUBLIC_APP_URL}`
+  const imageUrl = `${process.env.PUBLIC_APP_URL}`
   return imageUrl
 }
 

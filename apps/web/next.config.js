@@ -72,6 +72,7 @@ module.exports = () => {
       },
     },
     transpilePackages: [
+      'next-auth',
       'solito',
       'react-native-web',
       'expo-linking',

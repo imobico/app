@@ -5,11 +5,6 @@ export interface AuthPropsState {
   accessToken?: string | null
 }
 
-export interface SecureStoreData extends AuthPropsState {
-  email: string
-  password: string
-}
-
 export interface AuthProps {
   status: 'loading' | 'authenticated' | 'unauthenticated'
   data?: AuthPropsState

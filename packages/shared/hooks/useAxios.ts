@@ -1,14 +1,16 @@
 import { AxiosInstance } from '@/shared/lib/axios'
+import { useSession } from '@/shared/provider/session'
 import { useEffect } from 'react'
-import { useSession } from '../context/auth'
 
 export const useAxios = () => {
   const { data: authState, update, signOut } = useSession()
 
+  console.log("useAxios", { authState })
+
   useEffect(() => {
     const requestIntercept = AxiosInstance.interceptors.request.use(
       async (config) => {
-        const accessToken = authState?.accessToken
+        const accessToken = authState?.user?.accessToken
         if (!config.headers.Authorization) {
           config.headers.Authorization = `Bearer ${accessToken}`
         }

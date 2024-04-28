@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { isValidToken } from './jwt'
 
-const API_URL = process.env.EXPO_PUBLIC_API_URL
+const API_URL = process.env.PUBLIC_API_URL
 
 export const refreshTokens = async (refreshToken: string | undefined | null) => {
   try {

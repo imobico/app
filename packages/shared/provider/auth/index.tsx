@@ -6,7 +6,7 @@
 // import { useRouter } from 'solito/router'
 
 // const SESSION_STORAGE_KEY = 'imoblr-session'
-// const API_URL = process.env.EXPO_PUBLIC_API_URL
+// const API_URL = process.env.PUBLIC_API_URL
 
 // export const AuthProvider = ({ children }: React.PropsWithChildren) => {
 //   const [session, setSession] = useState<AuthPropsState>({})

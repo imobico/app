@@ -42,7 +42,7 @@ export const SignUpSignInComponent = ({ type }: { type: string }): React.ReactNo
         {/* 3 buttons, for google, apple, discord */}
         <Button
           size='$5'
-          onPress={() => {}}
+          onPress={() => { }}
           hoverStyle={{ opacity: 0.8 }}
           focusStyle={{ scale: 0.95 }}
           borderColor='$gray8Light'
@@ -57,7 +57,7 @@ export const SignUpSignInComponent = ({ type }: { type: string }): React.ReactNo
         </Button>
         <Button
           size='$5'
-          onPress={() => {}}
+          onPress={() => { }}
           hoverStyle={{ opacity: 0.8 }}
           focusStyle={{ scale: 0.95 }}
           borderColor='$gray8Light'
@@ -72,7 +72,7 @@ export const SignUpSignInComponent = ({ type }: { type: string }): React.ReactNo
         </Button>
         <Button
           size='$5'
-          onPress={() => {}}
+          onPress={() => { }}
           hoverStyle={{ opacity: 0.8 }}
           focusStyle={{ scale: 0.95 }}
           borderColor='$gray8Light'
@@ -117,8 +117,8 @@ export const SignUpSignInComponent = ({ type }: { type: string }): React.ReactNo
         themeInverse
         onPress={() => onButtonPress()}
         hoverStyle={{ opacity: 0.8 }}
-        onHoverIn={() => {}}
-        onHoverOut={() => {}}
+        onHoverIn={() => { }}
+        onHoverOut={() => { }}
         focusStyle={{ scale: 0.975 }}
       >
         {type === 'sign-up' ? 'Sign up' : 'Sign in'}

@@ -29,17 +29,17 @@ if (process.env.NODE_ENV === 'production') {
 const title = `${process.env.NEXT_PUBLIC_METADATA_NAME}`
 const description = `${process.env.NEXT_PUBLIC_METADATA_DESCRIPTION}`
 
-const T4App = ({ Component, pageProps }: SolitoAppProps<{ initialSession: Session | null }>) => {
+const T4App = ({ Component, pageProps: { session, ...pageProps }, }: SolitoAppProps<{ session: Session | null }>) => {
+  console.log("============================ _APP RUNNING ==========================", { session })
+
   return (
     <>
       <Metadata />
-      <StrictMode>
-        <SessionProvider>
-          <Provider>
-            <Component {...pageProps} />
-          </Provider>
-        </SessionProvider>
-      </StrictMode>
+      <SessionProvider session={session} refetchInterval={60}>
+        <Provider>
+          <Component {...pageProps} />
+        </Provider>
+      </SessionProvider>
     </>
   )
 }

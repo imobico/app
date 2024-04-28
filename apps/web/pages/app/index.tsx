@@ -1,5 +1,3 @@
-'use client'
-
 import useCurrentUser from '@/shared/hooks/useCurrentUser'
 
 const getGreeting = () => {
