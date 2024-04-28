@@ -1,27 +1,22 @@
 {
   "name": "@imoblr/ui",
   "version": "0.0.1",
-  "sideEffects": [
-    "*.css"
-  ],
+  "sideEffects": ["*.css"],
   "private": true,
   "types": "./src",
   "main": "src/index.tsx",
   "module:jsx": "src",
-  "files": [
-    "types",
-    "dist"
-  ],
+  "files": ["types", "dist"],
   "scripts": {
     "build": "tamagui-build --skip-types",
     "dev": "tamagui-build --skip-types --watch"
   },
   "dependencies": {
     "@imoblr/config": "workspace:*",
-    "@tamagui/toast": "^1.95.1",
-    "tamagui": "^1.95.1"
+    "@tamagui/toast": "^1.95.3",
+    "tamagui": "^1.95.3"
   },
   "devDependencies": {
-    "@tamagui/build": "^1.95.1"
+    "@tamagui/build": "^1.95.3"
   }
 }

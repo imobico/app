@@ -19,19 +19,19 @@
     "lint": "bunx @biomejs/biome lint ./packages ./apps",
     "fix": "bunx @biomejs/biome check --apply-unsafe ./packages ./apps",
     "clean": "git clean -xdf node_modules && rm -f bun.lockb && rm -rf ./apps/web/{.next,.tamagui,node_modules} && rm -rf ./packages/ui/dist",
-    "postinstall": "bun run check-deps",
+    "postinstall": "bun run check-deps --fix",
     "check-deps": "bunx check-dependency-version-consistency .",
     "deps:update": "bunx npm-check-updates -ui -ws"
   },
   "resolutions": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-refresh": "^0.14.0",
-    "react-native-svg": "13.9.0",
-    "react-native-web": "~0.19.6"
+    "react-native-svg": "15.2.0",
+    "react-native-web": "~0.19.11"
   },
   "dependencies": {
-    "@babel/runtime": "^7.18.9",
+    "@babel/runtime": "^7.24.4",
     "check-dependency-version-consistency": "^4.1.0",
     "typescript": "^5.4.5"
   },
