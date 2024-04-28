@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.18.9",
-    "@expo/config-plugins": "~7.2.2",
+    "@expo/config-plugins": "~7.9.0",
     "@imoblr/ui": "workspace:*",
     "@react-navigation/native": "^6.1.6",
     "@imoblr/shared": "workspace:*",
