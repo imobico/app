@@ -13,6 +13,7 @@ const disableExtraction =
 
 const plugins = [
   withTamagui({
+    appDir: true,
     config: '../../packages/config/src/tamagui.config.ts',
     components: ['tamagui', '@imoblr/ui'],
     importsWhitelist: ['constants.js', 'colors.js'],
