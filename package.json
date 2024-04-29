@@ -40,5 +40,6 @@
     "lefthook": "^1.6.10",
     "turbo": "^1.13.3"
   },
-  "trustedDependencies": ["@biomejs/biome"]
+  "trustedDependencies": ["@biomejs/biome"],
+  "packageManager": "bun@1.1.6"
 }
