@@ -1,4 +1,10 @@
-import { CustomToast, TamaguiProvider, type TamaguiProviderProps, ToastProvider, config } from '@imoblr/ui'
+import {
+  CustomToast,
+  TamaguiProvider,
+  type TamaguiProviderProps,
+  ToastProvider,
+  config,
+} from '@imoblr/ui'
 import { useColorScheme } from 'react-native'
 
 import { ToastViewport } from './ToastViewport'
@@ -12,16 +18,7 @@ export function Provider({ children, ...rest }: Omit<TamaguiProviderProps, 'conf
       defaultTheme={scheme === 'dark' ? 'dark' : 'light'}
       {...rest}
     >
-      <ToastProvider
-        swipeDirection="horizontal"
-        duration={6000}
-        native={
-          [
-            /* uncomment the next line to do native toasts on mobile. NOTE: it'll require you making a dev build and won't work with Expo Go */
-            // 'mobile'
-          ]
-        }
-      >
+      <ToastProvider swipeDirection='horizontal' duration={6000} native={['mobile']}>
         {children}
 
         <CustomToast />

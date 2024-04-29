@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "eamodio.gitlens",
+    "unifiedjs.vscode-mdx",
+    "robbowen.synthwave-vscode",
+    "wayou.vscode-todo-highlight",
+    "crystal-spider.jsdoc-generator",
+    "steoates.autoimport",
+    "irongeek.vscode-env",
+    "peterschmalfeldt.explorer-exclude",
+    "wilsonsio.color-vision",
+    "expo.vscode-expo-tools",
+    "biomejs.biome"
+  ]
+}

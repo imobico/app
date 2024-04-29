@@ -1,4 +1,4 @@
-import { config } from '@imoblr/config'
+import type { config } from '@imoblr/config'
 
 export type Conf = typeof config
 

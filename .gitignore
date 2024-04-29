@@ -4,6 +4,8 @@ dist
 
 # expo
 **/.expo/*
+apps/mobile/ios
+apps/mobile/android
 
 # next.js
 **/.next/*
