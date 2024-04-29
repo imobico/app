@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "bun --bun next dev",
-    "build": "bun run build",
+    "build": "bun run next build",
+    "build:vercel": "cd ../.. && bun run build:web",
     "start": "next start",
     "serve": "NODE_ENV=production next start --port 8151",
     "lint": "next lint"
