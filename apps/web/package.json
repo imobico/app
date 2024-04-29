@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "bun --bun next dev",
-    "build": "cd ../.. && bun run build && cd apps/web && next build",
+    "build": "bun run build",
     "start": "next start",
     "serve": "NODE_ENV=production next start --port 8151",
     "lint": "next lint"
@@ -27,5 +27,7 @@
   "devDependencies": {
     "@tamagui/next-plugin": "^1.95.3",
     "@types/node": "^20.12.7"
-  }
+  },
+  "trustedDependencies": ["@biomejs/biome"],
+  "packageManager": "bun@1.1.6"
 }
