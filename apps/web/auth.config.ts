@@ -4,21 +4,7 @@ import type { JWT } from 'next-auth/jwt'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
 import type { SignInResponse } from '@imoblr/shared/types/api'
-import { decodeJWT, getTokenDurationInSecs, refreshTokenFn } from '@imoblr/shared/utils/jwt'
-
-type CheckTokenResponse = 'unauthorized' | 'update' | 'valid'
-
-const checkTokens = (
-  refreshToken: string | undefined,
-  accessToken: string | undefined,
-): CheckTokenResponse => {
-  if (!refreshToken) return 'unauthorized'
-  const refreshTokenDuration = getTokenDurationInSecs(refreshToken)
-  const accessTokenDuration = getTokenDurationInSecs(accessToken)
-  if (refreshTokenDuration <= 0) return 'unauthorized'
-  if (refreshTokenDuration <= 180 || accessTokenDuration <= 120) return 'update'
-  return 'valid'
-}
+import { decodeJWT, refreshTokenFn } from '@imoblr/shared/utils/jwt'
 
 export default {
   pages: {
