@@ -6,7 +6,11 @@ import { ToastViewport } from './ToastViewport'
 // Create a client
 const queryClient = new QueryClient()
 
-export function SharedProviders({ children, ...rest }: Omit<TamaguiProviderProps, 'config'>) {
+export function SharedProviders({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
     <QueryClientProvider client={queryClient}>
       <ToastProvider
