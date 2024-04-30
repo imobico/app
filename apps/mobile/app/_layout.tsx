@@ -1,4 +1,5 @@
-import { Provider } from '@imoblr/shared/provider'
+import { SharedProviders } from '@imoblr/shared/provider'
+import { TamaguiProvider, config } from '@imoblr/ui'
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native'
 import { useFonts } from 'expo-font'
 import { Stack } from 'expo-router'
@@ -15,10 +16,16 @@ export default function HomeLayout() {
     return null
   }
   return (
-    <Provider>
-      <ThemeProvider value={scheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <Stack />
-      </ThemeProvider>
-    </Provider>
+    <TamaguiProvider
+      config={config}
+      disableInjectCSS
+      defaultTheme={scheme === 'dark' ? 'dark' : 'light'}
+    >
+      <SharedProviders>
+        <ThemeProvider value={scheme === 'dark' ? DarkTheme : DefaultTheme}>
+          <Stack />
+        </ThemeProvider>
+      </SharedProviders>
+    </TamaguiProvider>
   )
 }

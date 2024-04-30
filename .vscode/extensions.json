@@ -2,7 +2,6 @@
   "recommendations": [
     "eamodio.gitlens",
     "unifiedjs.vscode-mdx",
-    "robbowen.synthwave-vscode",
     "wayou.vscode-todo-highlight",
     "crystal-spider.jsdoc-generator",
     "steoates.autoimport",

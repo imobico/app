@@ -3,14 +3,15 @@
 import '@tamagui/core/reset.css'
 import '@tamagui/polyfill-dev'
 
+import { TamaguiProvider as TamaguiProviderOG, config } from '@imoblr/ui'
 import { NextThemeProvider, useRootTheme } from '@tamagui/next-theme'
 import { useServerInsertedHTML } from 'next/navigation'
-import React from 'react'
-import { StyleSheet } from 'react-native'
-import { config, TamaguiProvider as TamaguiProviderOG } from '@imoblr/ui'
+import type { ReactNode } from 'react'
+import { StyleSheet, useColorScheme } from 'react-native'
 
-export const TamaguiProvider = ({ children }: { children: React.ReactNode }) => {
+export const TamaguiNextProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useRootTheme()
+  const scheme = useColorScheme()
 
   useServerInsertedHTML(() => {
     // @ts-ignore
@@ -38,7 +39,11 @@ export const TamaguiProvider = ({ children }: { children: React.ReactNode }) => 
         setTheme(next as any)
       }}
     >
-      <TamaguiProviderOG config={config} themeClassNameOnRoot defaultTheme={theme}>
+      <TamaguiProviderOG
+        config={config}
+        themeClassNameOnRoot
+        defaultTheme={(scheme || theme) === 'dark' ? 'dark' : 'light'}
+      >
         {children}
       </TamaguiProviderOG>
     </NextThemeProvider>

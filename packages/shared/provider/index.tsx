@@ -1,29 +1,29 @@
-import {
-  CustomToast,
-  TamaguiProvider,
-  type TamaguiProviderProps,
-  ToastProvider,
-  config,
-} from '@imoblr/ui'
-import { useColorScheme } from 'react-native'
-
+import { CustomToast, type TamaguiProviderProps, ToastProvider } from '@imoblr/ui'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { ToastViewport } from './ToastViewport'
 
-export function Provider({ children, ...rest }: Omit<TamaguiProviderProps, 'config'>) {
-  const scheme = useColorScheme()
-  return (
-    <TamaguiProvider
-      config={config}
-      disableInjectCSS
-      defaultTheme={scheme === 'dark' ? 'dark' : 'light'}
-      {...rest}
-    >
-      <ToastProvider swipeDirection='horizontal' duration={6000} native={['mobile']}>
-        {children}
+// Create a client
+const queryClient = new QueryClient()
 
+export function SharedProviders({ children, ...rest }: Omit<TamaguiProviderProps, 'config'>) {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <ToastProvider
+        swipeDirection='horizontal'
+        duration={6000}
+        native={
+          [
+            // uncomment to enable native toasts on mobile
+            // 'mobile'
+          ]
+        }
+      >
+        {children}
         <CustomToast />
         <ToastViewport />
       </ToastProvider>
-    </TamaguiProvider>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   )
 }
