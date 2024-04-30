@@ -5,6 +5,16 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 
 import type { SignInResponse } from '@imoblr/shared/types/api'
 import { decodeJWT, refreshTokenFn } from '@imoblr/shared/utils/jwt'
+import { now } from '@imoblr/shared/utils/time'
+
+const REFRESH_TOKEN_MIN_DURATION = Number.parseInt(
+  process.env.AUTH_REFRESH_TOKEN_MIN_DURATION_IN_SECS || '86400',
+  10,
+)
+const ACCESS_TOKEN_MIN_DURATION = Number.parseInt(
+  process.env.AUTH_ACCESS_TOKEN_MIN_DURATION_IN_SECS || '300',
+  10,
+)
 
 export default {
   pages: {
@@ -84,22 +94,25 @@ export default {
       const refreshToken = token?.refreshToken as string | undefined
       const accessToken = token?.accessToken as string | undefined
 
-      const nowUnix = (Date.now() / 1000) as number
-
+      const nowUnix = now()
       const decodedRefreshToken = decodeJWT(refreshToken)
       const decodedAccessToken = decodeJWT(accessToken)
-      const refreshRemaingSeconds = Math.max(decodedRefreshToken?.payload?.exp || 0 - nowUnix, 0)
-      const accessRemaingSeconds = Math.max(decodedAccessToken?.payload?.exp || 0 - nowUnix, 0)
+      const refreshRemaingSeconds = Math.max((decodedRefreshToken?.payload?.exp || 0) - nowUnix, 0)
+      const accessRemaingSeconds = Math.max((decodedAccessToken?.payload?.exp || 0) - nowUnix, 0)
 
       if (!refreshToken || refreshRemaingSeconds === 0)
         throw new AuthError('authentication token expired')
-      if (refreshRemaingSeconds <= 60 || accessRemaingSeconds <= 60) {
+
+      if (
+        refreshRemaingSeconds <= REFRESH_TOKEN_MIN_DURATION ||
+        accessRemaingSeconds <= ACCESS_TOKEN_MIN_DURATION
+      ) {
         const updatedTokens = await refreshTokenFn(refreshToken)
         if (!updatedTokens) throw new AuthError('refresh token error')
-        return { ...token, updatedTokens }
+        return { ...token, ...updatedTokens }
       }
 
-      return token
+      return { ...token, ...user }
     },
     async session({ session, token }: { session: Session; token: JWT }): Promise<Session> {
       return {
@@ -111,9 +124,5 @@ export default {
       }
     },
   },
-  session: {
-    strategy: 'jwt',
-    maxAge: 180,
-    updateAge: 0,
-  },
+  session: { strategy: 'jwt' },
 } satisfies NextAuthConfig

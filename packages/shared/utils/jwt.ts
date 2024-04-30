@@ -36,6 +36,8 @@ export const refreshTokenFn = async (currentRefreshToken: string) => {
   if (currentRefreshToken) {
     const opts = { method: 'post', headers: { Authorization: `Bearer ${currentRefreshToken}` } }
     const resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/token/refresh`, opts)
+    console.log('refreshTokenFn', { status: resp.status, ok: resp.ok })
+
     if (resp.ok) {
       const data = await resp.json()
       return {

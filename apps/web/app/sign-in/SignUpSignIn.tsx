@@ -15,7 +15,17 @@ export const SignUpSignInComponent = ({ type }: { type: string }): React.ReactNo
     if (signInResponse?.error) {
       alert(signInResponse?.error)
     } else {
-      router.push('/app')
+      let afterLoginPage = '/app'
+
+      if (signInResponse?.url) {
+        const url = new URL(signInResponse?.url)
+        const callbackUrl = url.searchParams.get('callbackUrl')
+        if (callbackUrl) {
+          afterLoginPage = callbackUrl
+        }
+      }
+
+      router.replace(afterLoginPage)
     }
   }
 
