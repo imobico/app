@@ -2,6 +2,7 @@
 
 import { SharedProviders } from '@imoblr/shared/provider'
 import { type Session, SessionProvider } from '@imoblr/shared/provider/session'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { TamaguiNextProvider } from './TamaguiNextProvider'
 
 const refetchInterval = Number.parseInt(process.env.AUTH_SESSION_REFRESH_INTERVAL || '60', 10)
@@ -24,6 +25,7 @@ export default function RootLayout({
             <SharedProviders>{children}</SharedProviders>
           </SessionProvider>
         </TamaguiNextProvider>
+        <ReactQueryDevtools initialIsOpen={false} />
       </body>
     </html>
   )

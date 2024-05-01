@@ -18,7 +18,9 @@
     "format": "bunx @biomejs/biome format --write ./packages ./apps",
     "lint": "bunx @biomejs/biome lint ./packages ./apps",
     "fix": "bunx @biomejs/biome check --apply-unsafe ./packages ./apps",
-    "clean": "git clean -xdf node_modules && rm -f bun.lockb && rm -rf ./apps/web/{.next,.tamagui,node_modules} && rm -rf ./packages/ui/dist",
+    "clean": "git clean -xdf node_modules && rm -f bun.lockb && bun run clean:web && bun run clean:mobile && rm -rf ./packages/ui/dist",
+    "clean:web": "rm -rf ./apps/web/{.next,.tamagui,node_modules}",
+    "clean:mobile": "rm -rf ./apps/mobile/{.expo,android,ios,node_modules}",
     "postinstall": "bun run check-deps --fix",
     "check-deps": "bunx check-dependency-version-consistency .",
     "deps:update": "bunx npm-check-updates -ui -ws"
@@ -35,6 +37,9 @@
     "@tanstack/react-query": "^5.32.0",
     "@tanstack/react-query-devtools": "^5.32.0",
     "check-dependency-version-consistency": "^4.1.0",
+    "expo-dev-client": "~4.0.7",
+    "expo-system-ui": "^2.9.4",
+    "react-query-native-devtools": "^4.0.0",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
