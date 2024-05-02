@@ -51,10 +51,10 @@
   },
   "resolutions": {
     "metro": "0.76.0",
-    "metro-resolver": "0.76.0"
+    "metro-resolver": "0.80.9"
   },
   "overrides": {
     "metro": "0.76.0",
-    "metro-resolver": "0.76.0"
+    "metro-resolver": "0.80.9"
   }
 }
