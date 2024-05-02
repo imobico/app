@@ -50,11 +50,11 @@
     "typescript": "^5.4.5"
   },
   "resolutions": {
-    "metro": "0.76.0",
+    "metro": "0.80.9",
     "metro-resolver": "0.76.0"
   },
   "overrides": {
-    "metro": "0.76.0",
+    "metro": "0.80.9",
     "metro-resolver": "0.76.0"
   }
 }
