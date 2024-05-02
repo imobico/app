@@ -9,23 +9,22 @@ const refetchInterval = Number.parseInt(process.env.AUTH_SESSION_REFRESH_INTERVA
 
 export default function RootLayout({
   children,
-  session,
 }: {
   children: React.ReactNode
   session: Session | undefined
 }) {
-  console.log('RootLayout session', { session })
-
   return (
     <html lang='pt-BR'>
       <body>
         {/* this Tamagui provider is tailored to the web (NextJS) app */}
         <TamaguiNextProvider>
-          <SessionProvider refetchInterval={refetchInterval} session={session}>
-            <SharedProviders>{children}</SharedProviders>
+          <SessionProvider refetchInterval={refetchInterval}>
+            <SharedProviders>
+              {children}
+              <ReactQueryDevtools initialIsOpen={false} />
+            </SharedProviders>
           </SessionProvider>
         </TamaguiNextProvider>
-        <ReactQueryDevtools initialIsOpen={false} />
       </body>
     </html>
   )
