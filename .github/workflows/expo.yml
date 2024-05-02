@@ -58,7 +58,7 @@ jobs:
 
       - name: Comment commit
         if: github.event_name == 'push'
-        uses: peter-evans/commit-comment@v2
+        uses: peter-evans/commit-comment@v3
         with:
           body: |
             ✔ EAS ${{ env.BUILD_PROFILE }} build completed
