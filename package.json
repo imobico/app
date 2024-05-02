@@ -5,9 +5,9 @@
   "scripts": {
     "prepare": "lefthook install",
     "dev:desktop": "",
-    "dev:web": "bun turbo dev --parallel --filter={@imoblr/web-app,@imoblr/ui}",
-    "dev:ios": "bun turbo dev:ios --parallel --filter={@imoblr/mobile-app,@imoblr/ui}",
-    "dev:android": "bun turbo dev:android --parallel --filter={@imoblr/mobile-app,@imoblr/ui}",
+    "dev:web": "bun dotenv -c -- turbo dev --parallel --filter={@imoblr/web-app,@imoblr/ui}",
+    "dev:ios": "bun dotenv -c -- turbo dev:ios --parallel --filter={@imoblr/mobile-app,@imoblr/ui}",
+    "dev:android": "bun dotenv -c -- turbo dev:android --parallel --filter={@imoblr/mobile-app,@imoblr/ui}",
     "build": "cd packages/ui && tamagui-build",
     "build:web": "bun run build --parallel --filter={@imoblr/web-app,@imoblr/ui,@imoblr/config}",
     "build:ios": "cd apps/mobile && bun build:ios",
@@ -18,7 +18,9 @@
     "format": "bunx @biomejs/biome format --write ./packages ./apps",
     "lint": "bunx @biomejs/biome lint ./packages ./apps",
     "fix": "bunx @biomejs/biome check --apply-unsafe ./packages ./apps",
-    "clean": "git clean -xdf node_modules && rm -f bun.lockb && rm -rf ./apps/web/{.next,.tamagui,node_modules} && rm -rf ./packages/ui/dist",
+    "clean": "git clean -xdf node_modules && rm -f bun.lockb && bun run clean:web && bun run clean:mobile && rm -rf ./packages/ui/dist",
+    "clean:web": "rm -rf ./apps/web/{.next,.tamagui,node_modules}",
+    "clean:mobile": "rm -rf ./apps/mobile/{.expo,android,ios,node_modules}",
     "postinstall": "bun run check-deps --fix",
     "check-deps": "bunx check-dependency-version-consistency .",
     "deps:update": "bunx npm-check-updates -ui -ws"
@@ -35,12 +37,16 @@
     "@tanstack/react-query": "^5.32.0",
     "@tanstack/react-query-devtools": "^5.32.0",
     "check-dependency-version-consistency": "^4.1.0",
+    "expo-dev-client": "~4.0.7",
+    "expo-system-ui": "^2.9.4",
+    "react-query-native-devtools": "^4.0.0",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.7.1",
     "lefthook": "^1.6.10",
-    "turbo": "^1.13.3"
+    "turbo": "^1.13.3",
+    "dotenv-cli": "^7.4.1"
   },
   "trustedDependencies": ["@biomejs/biome"],
   "packageManager": "bun@1.1.6"
