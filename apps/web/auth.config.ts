@@ -7,6 +7,8 @@ import type { SignInResponse } from '@imoblr/shared/types/api'
 import { decodeJWT, refreshTokenFn } from '@imoblr/shared/utils/jwt'
 import { now } from '@imoblr/shared/utils/time'
 
+const publicPaths = ['/entrar', '/cadastro']
+
 const REFRESH_TOKEN_MIN_DURATION = Number.parseInt(
   process.env.AUTH_REFRESH_TOKEN_MIN_DURATION_IN_SECS || '86400',
   10,
@@ -18,7 +20,7 @@ const ACCESS_TOKEN_MIN_DURATION = Number.parseInt(
 
 export default {
   pages: {
-    signIn: '/sign-in',
+    signIn: '/entrar',
   },
   providers: [
     CredentialsProvider({
@@ -60,12 +62,10 @@ export default {
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user
-      const isPrivatePath =
-        nextUrl.pathname.startsWith('/app') || nextUrl.pathname.startsWith('/dashboard')
-      if (isPrivatePath && isLoggedIn) return true
-      if (isPrivatePath) return false
+      const isPublicPath = publicPaths.includes(nextUrl.pathname)
+      if (isPublicPath || isLoggedIn) return true
 
-      return true
+      return false
     },
     async jwt({
       token,
