@@ -1,8 +1,9 @@
 import { useCurrentUser } from '@imoblr/shared/hooks/useCurrentUser'
 import { signOut } from '@imoblr/shared/provider/session'
 import { Button, Paragraph, YStack } from '@imoblr/ui'
+import React from 'react'
 
-export function HomeScreen() {
+const Screen = () => {
   const { data } = useCurrentUser()
 
   return (
@@ -19,3 +20,5 @@ export function HomeScreen() {
     </YStack>
   )
 }
+
+export default Screen

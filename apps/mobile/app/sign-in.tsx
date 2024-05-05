@@ -1,4 +1,4 @@
-import { UserDetailScreen } from '@imoblr/shared/features/user/detail-screen'
+import { SignInScreen } from '@imoblr/shared/features/sign-in/screen'
 import { Stack } from 'expo-router'
 
 export default function Screen() {
@@ -6,10 +6,10 @@ export default function Screen() {
     <>
       <Stack.Screen
         options={{
-          title: 'User',
+          title: 'Sign In',
         }}
       />
-      <UserDetailScreen />
+      <SignInScreen />
     </>
   )
 }

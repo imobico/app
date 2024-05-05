@@ -1,15 +1,15 @@
 'use client'
 
-import { SignInScreen } from '@imoblr/shared/features/sign-in/screen'
+import { SignUpScreen } from '@imoblr/shared/features/sign-up/screen'
 import Head from 'next/head'
 
 export default function Screen() {
   return (
     <>
       <Head>
-        <title>Sign In</title>
+        <title>Sign Up</title>
       </Head>
-      <SignInScreen />
+      <SignUpScreen />
     </>
   )
 }

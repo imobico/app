@@ -1,4 +1,4 @@
-import { HomeScreen } from '@imoblr/shared/features/home/screen'
+import { SignUpScreen } from '@imoblr/shared/features/sign-up/screen.native'
 import { Stack } from 'expo-router'
 
 export default function Screen() {
@@ -6,10 +6,10 @@ export default function Screen() {
     <>
       <Stack.Screen
         options={{
-          title: 'Home',
+          title: 'Sign Up',
         }}
       />
-      <HomeScreen />
+      <SignUpScreen />
     </>
   )
 }
