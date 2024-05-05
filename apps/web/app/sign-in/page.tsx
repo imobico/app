@@ -1,14 +1,17 @@
 'use client'
 
-import { YStack } from '@imoblr/ui'
-import { SignUpSignInComponent } from './SignUpSignIn'
+import { SignInScreen } from '@imoblr/shared/features/sign-in/screen'
+import { Stack } from 'expo-router'
 
-const SignInScreen = (): React.ReactNode => {
+export default function Screen() {
   return (
-    <YStack flex={1} justifyContent='center' alignItems='center' space>
-      <SignUpSignInComponent type='sign-in' />
-    </YStack>
+    <>
+      <Stack.Screen
+        options={{
+          title: 'Sign In',
+        }}
+      />
+      <SignInScreen />
+    </>
   )
 }
-
-export default SignInScreen

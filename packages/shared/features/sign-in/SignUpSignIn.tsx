@@ -1,6 +1,6 @@
-import { signIn } from '@imoblr/shared/provider/session'
+import { getSession, signIn } from '@imoblr/shared/provider/session'
 import { Button, Input, Paragraph, Stack, XStack, YStack } from '@imoblr/ui'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'solito/link'
 import { useRouter } from 'solito/navigation'
 
@@ -11,23 +11,25 @@ export const SignUpSignInComponent = ({ type }: { type: string }): React.ReactNo
 
   const onButtonPress = async () => {
     const signInResponse = await signIn('credentials', { email, password, redirect: false })
-
-    if (signInResponse?.error) {
-      alert(signInResponse?.error)
+    if (signInResponse?.ok) {
+      router.replace('/home')
     } else {
-      let afterLoginPage = '/app'
-
-      if (signInResponse?.url) {
-        const url = new URL(signInResponse?.url)
-        const callbackUrl = url.searchParams.get('callbackUrl')
-        if (callbackUrl) {
-          afterLoginPage = callbackUrl
-        }
-      }
-
-      router.replace(afterLoginPage)
+      alert(signInResponse?.error)
     }
   }
+
+  useEffect(() => {
+    const retriveSession = async () => {
+      const session = await getSession()
+      if (session?.user?.refreshToken) {
+        router.replace('/home')
+      }
+    }
+
+    retriveSession()
+
+    return () => {}
+  }, [router])
 
   return (
     <YStack
@@ -42,9 +44,8 @@ export const SignUpSignInComponent = ({ type }: { type: string }): React.ReactNo
       backgroundColor='$background'
     >
       <Paragraph size='$5' fontWeight={'700'} opacity={0.8} marginBottom='$1'>
-        {type === 'sign-up' ? 'Create your account' : 'Sign in to your account'}
+        {/* {type === 'sign-up' ? 'Create your account' : 'Sign in to your account'} */}
       </Paragraph>
-      {/* all the oauth sign up options */}
       <XStack alignItems='center' width='100%' justifyContent='space-between'>
         <Stack height='$0.25' backgroundColor='black' width='$10' opacity={0.1} />
         <Paragraph size='$3' opacity={0.5}>
@@ -102,7 +103,7 @@ export const SignUpSignInComponent = ({ type }: { type: string }): React.ReactNo
       </XStack>
 
       {/* forgot password */}
-      {type === 'sign-in' && (
+      {/* {type === 'sign-in' && (
         <XStack marginTop='$-2.5'>
           <Paragraph size='$2' marginRight='$2' opacity={0.4}>
             Forgot your password?
@@ -119,7 +120,7 @@ export const SignUpSignInComponent = ({ type }: { type: string }): React.ReactNo
             </Paragraph>
           </Link>
         </XStack>
-      )}
+      )} */}
     </YStack>
   )
 }
