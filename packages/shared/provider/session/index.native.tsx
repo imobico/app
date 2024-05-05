@@ -228,7 +228,7 @@ export function SessionProvider(props: SessionProviderProps) {
       status: loading ? 'loading' : session ? 'authenticated' : 'unauthenticated',
       async update() {
         const refreshToken = session?.user?.refreshToken
-        if (!refreshToken) return await signOut()
+        if (!refreshToken) return await signOut({ callbackUrl: '/sign-in' })
         const headers = {
           Authorization: `Bearer ${refreshToken}`,
           'Content-Type': 'application/json',

@@ -23,11 +23,11 @@ export const useAxios = () => {
       (response) => response,
       async (error) => {
         const prevRequest = error.config
-        if (error.response.status === 403) return await signOut()
+        if (error.response.status === 403) return await signOut({ callbackUrl: '/sign-in' })
         if (error.response.status === 401) {
           prevRequest.sent = true
           const newTokens = await update({ ...authState, forceUpdate: true })
-          if (!newTokens) return await signOut()
+          if (!newTokens) return await signOut({ callbackUrl: '/sign-in' })
           prevRequest.headers.Authorization = `Bearer ${newTokens?.user?.accessToken}`
           return AxiosInstance(prevRequest)
         }
