@@ -1,9 +1,9 @@
 import { refreshTokenFn } from '@imoblr/shared/utils/jwt'
 import { now } from '@imoblr/shared/utils/time'
 import { User } from '@tamagui/lucide-icons'
+import { useRouter } from 'expo-router'
 import * as SecureStore from 'expo-secure-store'
 import React from 'react'
-import { useRouter } from 'solito/router'
 
 const SESSION_STORAGE_KEY = 'imoblr-session'
 const API_URL = process.env.EXPO_PUBLIC_API_URL
@@ -68,17 +68,6 @@ type SignInAuthorizationParams = {
   email: string
   password: string
 }
-
-// function broadcast() {
-//   if (typeof BroadcastChannel !== 'undefined') {
-//     return new BroadcastChannel('imoblr-auth')
-//   }
-//   return {
-//     postMessage: () => { },
-//     addEventListener: () => { },
-//     removeEventListener: () => { },
-//   }
-// }
 
 export const SessionContext = React.createContext?.<SessionContextValue>({} as SessionContextValue)
 
@@ -168,8 +157,6 @@ export async function signOut(signoutOptions?: SignoutOptions) {
   await SecureStore.deleteItemAsync(SESSION_STORAGE_KEY)
   __IMOBLR_SESSION._session = undefined
 
-  // broadcast().postMessage('delete')
-
   if (redirect) {
     __IMOBLR_SESSION._router.replace(callbackUrl)
     return
@@ -235,18 +222,6 @@ export function SessionProvider(props: SessionProviderProps) {
     }
   }, [refetchInterval])
 
-  // React.useEffect(() => {
-  //   const updateSession = () => __IMOBLR_SESSION._getSession()
-  //   broadcast().addEventListener('update', updateSession)
-  //   const deleteSession = () => __IMOBLR_SESSION._setSession(undefined)
-  //   broadcast().addEventListener('delete', deleteSession)
-
-  //   return () => {
-  //     broadcast().removeEventListener('update', updateSession)
-  //     broadcast().removeEventListener('delete', deleteSession)
-  //   }
-  // }, [])
-
   const value: any = React.useMemo(
     () => ({
       data: session,
@@ -278,4 +253,7 @@ export function SessionProvider(props: SessionProviderProps) {
   )
 
   return <SessionContext.Provider value={value}>{children}</SessionContext.Provider>
+}
+function useFocusEffect(arg0: () => void) {
+  throw new Error('Function not implemented.')
 }

@@ -11,7 +11,6 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
-  session: Session | undefined
 }) {
   return (
     <html lang='pt-BR'>

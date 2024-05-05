@@ -12,7 +12,7 @@ export const SignUpSignInComponent = ({ type }: { type: string }): React.ReactNo
   const onButtonPress = async () => {
     const signInResponse = await signIn('credentials', { email, password, redirect: false })
     if (signInResponse?.ok) {
-      router.replace('/home')
+      router.replace('/')
     } else {
       alert(signInResponse?.error)
     }
@@ -22,7 +22,7 @@ export const SignUpSignInComponent = ({ type }: { type: string }): React.ReactNo
     const retriveSession = async () => {
       const session = await getSession()
       if (session?.user?.refreshToken) {
-        router.replace('/home')
+        router.replace('/')
       }
     }
 

@@ -3,7 +3,7 @@
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "[typescriptreact]": {
-    "editor.defaultFormatter": "biomejs.biome"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "editor.linkedEditing": true,
   "javascript.preferences.renameMatchingJsxTags": true,

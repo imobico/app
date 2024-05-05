@@ -1,5 +1,5 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome'
-import { useSession } from '@imoblr/shared/provider/session/index.native'
+import { useSession } from '@imoblr/shared/provider/session'
 import { Paragraph } from '@imoblr/ui'
 import { Redirect, Tabs } from 'expo-router'
 import React from 'react'
@@ -19,19 +19,13 @@ const AuthorizedLayout = () => {
 
   return (
     <Tabs
-      initialRouteName='home'
+      initialRouteName='index'
       screenOptions={{ tabBarActiveTintColor: 'blue', headerShown: false }}
     >
       <Tabs.Screen
-        name='home'
+        name='index'
         options={{
           tabBarIcon: ({ color }) => <FontAwesome size={28} name='home' color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name='listings'
-        options={{
-          tabBarIcon: ({ color }) => <FontAwesome size={28} name='cogs' color={color} />,
         }}
       />
     </Tabs>

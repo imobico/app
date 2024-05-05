@@ -1,22 +1,21 @@
 import { useCurrentUser } from '@imoblr/shared/hooks/useCurrentUser'
-import { getSession, signOut } from '@imoblr/shared/provider/session/index.native'
+import { signOut } from '@imoblr/shared/provider/session'
 import { Button, Paragraph, YStack } from '@imoblr/ui'
 import React from 'react'
-import { View } from 'react-native'
 
 const Screen = () => {
   const { data } = useCurrentUser()
-  const session = getSession()
 
   return (
     <YStack f={1} jc='center' ai='center' p='$4' gap='$4'>
       <Paragraph>HomePage</Paragraph>
+      <Paragraph>{JSON.stringify(data)}</Paragraph>
       <Button
         onPress={async () => {
-          await signOut()
+          await signOut({ callbackUrl: '/sign-in' })
         }}
       >
-        My button
+        SignOut
       </Button>
     </YStack>
   )

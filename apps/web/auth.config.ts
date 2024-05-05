@@ -59,13 +59,11 @@ export default {
   ],
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
+      const publicPaths = ['/sign-in', '/sign-up']
       const isLoggedIn = !!auth?.user
-      const isPrivatePath =
-        nextUrl.pathname.startsWith('/app') || nextUrl.pathname.startsWith('/dashboard')
-      if (isPrivatePath && isLoggedIn) return true
-      if (isPrivatePath) return false
-
-      return true
+      const isPublicPath = publicPaths.some((path) => nextUrl.pathname.startsWith(path))
+      if (isPublicPath) return true
+      return isLoggedIn
     },
     async jwt({
       token,

@@ -1,5 +1,5 @@
 import { SharedProviders } from '@imoblr/shared/provider'
-import { SessionProvider } from '@imoblr/shared/provider/session/index.native'
+import { SessionProvider } from '@imoblr/shared/provider/session'
 import { TamaguiProvider, config } from '@imoblr/ui'
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native'
 import { useFonts } from 'expo-font'
@@ -42,7 +42,7 @@ export default function RootLayout({ children }) {
       <SessionProvider>
         <SharedProviders>
           <ThemeProvider value={scheme === 'dark' ? DarkTheme : DefaultTheme}>
-            <Slot initialRouteName='/sign-in' />
+            <Slot initialRouteName='/' />
           </ThemeProvider>
         </SharedProviders>
       </SessionProvider>
