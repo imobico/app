@@ -11,7 +11,7 @@ export function HomeScreen() {
       <Paragraph>{JSON.stringify(data)}</Paragraph>
       <Button
         onPress={async () => {
-          await signOut({ callbackUrl: '/sign-in' })
+          await signOut({ callbackUrl: '/entrar' })
         }}
       >
         SignOut

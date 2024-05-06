@@ -89,7 +89,7 @@ export const SignUpSignInComponent = ({ type }: { type: string }): React.ReactNo
         <Paragraph size='$2' marginRight='$2' opacity={0.4}>
           {type === 'sign-up' ? 'Already have an account?' : `Don't have an account?`}
         </Paragraph>
-        <Link href={type === 'sign-up' ? '/sign-in' : '/sign-up'}>
+        <Link href={type === 'sign-up' ? '/entrar' : '/cadastro'}>
           <Paragraph
             cursor={'pointer'}
             size='$2'

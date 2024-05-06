@@ -14,7 +14,7 @@ const AuthorizedLayout = () => {
   }
 
   if (authState !== 'authenticated') {
-    return <Redirect href={'/sign-in'} />
+    return <Redirect href={'/entrar'} />
   }
 
   return (

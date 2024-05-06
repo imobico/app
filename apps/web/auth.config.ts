@@ -18,7 +18,7 @@ const ACCESS_TOKEN_MIN_DURATION = Number.parseInt(
 
 export default {
   pages: {
-    signIn: '/sign-in',
+    signIn: '/entrar',
   },
   providers: [
     CredentialsProvider({
@@ -59,7 +59,7 @@ export default {
   ],
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
-      const publicPaths = ['/sign-in', '/sign-up']
+      const publicPaths = ['/entrar', '/cadastro']
       const isLoggedIn = !!auth?.user
       const isPublicPath = publicPaths.some((path) => nextUrl.pathname.startsWith(path))
       if (isPublicPath) return true
