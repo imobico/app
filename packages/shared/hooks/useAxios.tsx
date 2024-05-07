@@ -24,7 +24,7 @@ export const useAxios = () => {
       async (error) => {
         const prevRequest = error.config
         if (error.response.status === 403) return await signOut({ callbackUrl: '/entrar' })
-        if (error.response.status === 401) {
+        if (error.response.status === 401 && !prevRequest.sent) {
           prevRequest.sent = true
           const newTokens = await update({ ...authState, forceUpdate: true })
           if (!newTokens) return await signOut({ callbackUrl: '/entrar' })
