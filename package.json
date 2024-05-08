@@ -44,7 +44,7 @@
     "axios": "^1.6.8",
     "check-dependency-version-consistency": "^4.1.0",
     "expo-dev-client": "~4.0.7",
-    "expo-system-ui": "^2.9.4",
+    "expo-system-ui": "^3.0.0",
     "react-native-svg": "^15.2.0-rc.0",
     "react-query-native-devtools": "^4.0.0",
     "typescript": "^5.4.5"
