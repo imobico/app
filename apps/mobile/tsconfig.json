@@ -1,10 +1,15 @@
 {
-  "extends": "expo/tsconfig.base",
+  "extends": "../../tsconfig",
   "compilerOptions": {
-    "strict": true,
+    "strictNullChecks": true,
+    "noUncheckedIndexedAccess": true,
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@imoblr/shared/*": ["../../packages/shared/*"],
+      "@imoblr/ui/*": ["../../packages/ui/*"],
+      "@imoblr/auth": ["../../packages/auth/*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
+  "include": ["**/*.ts", "**/*.tsx"]
 }

@@ -1,5 +1,5 @@
 {
-  "name": "imoblr-expo-upgrade",
+  "name": "@imoblr/mobile-app",
   "version": "1.0.0",
   "dependencies": {
     "@expo/vector-icons": "^14.0.0",
@@ -22,7 +22,8 @@
     "react-native-screens": "3.31.1",
     "react-native-svg": "15.2.0",
     "react-native-web": "~0.19.11",
-    "react-query-native-devtools": "^4.0.0"
+    "react-query-native-devtools": "^4.0.0",
+    "react": "18.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
@@ -48,6 +49,8 @@
     "dev:ios": "expo run:ios",
     "dev:ios:go": "expo start:ios",
     "prebuild": "expo prebuild",
-    "reset-project": "./scripts/reset-project.js"
+    "reset-project": "./scripts/reset-project.js",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
   }
 }
