@@ -12,7 +12,7 @@
     "dev": "tamagui-build --skip-types --watch"
   },
   "dependencies": {
-    "@imoblr/config": "workspace:*",
+    "@imoblr/config": "0.0.1",
     "@tamagui/toast": "^1.96.0",
     "tamagui": "^1.96.0"
   },

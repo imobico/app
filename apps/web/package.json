@@ -11,8 +11,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@imoblr/shared": "workspace:*",
-    "@imoblr/ui": "workspace:*",
+    "@imoblr/shared": "0.1.0",
+    "@imoblr/ui": "0.0.1",
     "@tamagui/config": "^1.96.0",
     "@tamagui/next-theme": "^1.96.0",
     "@tanstack/react-query": "^5.35.1",
