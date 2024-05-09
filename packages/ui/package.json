@@ -9,7 +9,9 @@
   "files": ["types", "dist"],
   "scripts": {
     "build": "tamagui-build --skip-types",
-    "dev": "tamagui-build --skip-types --watch"
+    "dev:web": "tamagui-build --skip-types --watch",
+    "dev:ios": "tamagui-build --skip-types --watch",
+    "dev:android": "tamagui-build --skip-types --watch"
   },
   "dependencies": {
     "@imoblr/config": "0.0.1",
