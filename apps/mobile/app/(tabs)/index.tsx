@@ -1,4 +1,5 @@
-import { Image, Platform, StyleSheet } from 'react-native'
+import { Button as TamaguiButton } from '@imoblr/ui'
+import { Button, Image, Platform, StyleSheet } from 'react-native'
 
 import { HelloWave } from '@/components/HelloWave'
 import ParallaxScrollView from '@/components/ParallaxScrollView'
@@ -22,6 +23,9 @@ export default function HomeScreen() {
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
         <ThemedText type='subtitle'>Step 1: Try it</ThemedText>
+        <ThemedView style={styles.stepContainer}>
+          <TamaguiButton onPress={() => console.log('pressed')}>My tamagui button</TamaguiButton>
+        </ThemedView>
         <ThemedText>
           Edit <ThemedText type='defaultSemiBold'>app/(tabs)/index.tsx</ThemedText> to see changes.
           Press{' '}
