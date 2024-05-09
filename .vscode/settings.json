@@ -20,7 +20,12 @@
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
     "**/node_modules": true,
-    "node_modules": true
+    "node_modules": true,
+    "**/.turbo": true,
+    ".turbo": true
   },
-  "explorerExclude.backup": {}
+  "explorerExclude.backup": {},
+  "material-icon-theme.folders.associations": {
+    "ui": "plugin"
+  }
 }

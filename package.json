@@ -1,7 +1,6 @@
 {
-  "name": "imoblr-monorepo",
+  "name": "@imoblr/monorepo",
   "dependencies": {
-    "@babel/runtime": "^7.24.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "5.3.3"
