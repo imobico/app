@@ -27,36 +27,17 @@
     "check-deps": "bunx check-dependency-version-consistency .",
     "deps:update": "bunx npm-check-updates -ui -ws"
   },
-  "resolutions": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-refresh": "^0.14.0",
-    "react-native-svg": "^15.2.0-rc.0",
-    "react-native-web": "~0.19.11"
-  },
   "dependencies": {
-    "@babel/runtime": "^7.24.4",
-    "@fortawesome/fontawesome-svg-core": "^6.5.2",
-    "@fortawesome/free-brands-svg-icons": "^6.5.2",
-    "@fortawesome/free-regular-svg-icons": "^6.5.2",
-    "@fortawesome/free-solid-svg-icons": "^6.5.2",
-    "@fortawesome/react-native-fontawesome": "^0.3.0",
-    "@tanstack/react-query": "^5.32.0",
-    "@tanstack/react-query-devtools": "^5.32.0",
-    "axios": "^1.6.8",
+    "@babel/runtime": "^7.24.5",
     "check-dependency-version-consistency": "^4.1.0",
-    "expo-dev-client": "~4.0.7",
-    "expo-system-ui": "~3.0.4",
-    "react-native-svg": "^15.2.0-rc.0",
-    "react-query-native-devtools": "^4.0.0",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.7.1",
+    "@biomejs/biome": "^1.7.3",
     "lefthook": "^1.6.10",
     "turbo": "^1.13.3",
-    "dotenv-cli": "^7.4.1"
+    "dotenv-cli": "^7.4.2"
   },
   "trustedDependencies": ["@biomejs/biome"],
-  "packageManager": "bun@1.1.6"
+  "packageManager": "bun@1.1.7"
 }
