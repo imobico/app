@@ -1,47 +1,35 @@
 {
   "expo": {
-    "name": "imoblr",
-    "slug": "imoblr",
-    "scheme": "imoblr",
+    "name": "imoblr-expo-upgrade",
+    "slug": "imoblr-expo-upgrade",
     "version": "1.0.0",
-    "runtimeVersion": {
-      "policy": "nativeVersion"
-    },
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/images/icon.png",
+    "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "updates": {
-      "enabled": false,
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.imoblr.app",
-      "config": {
-        "usesNonExemptEncryption": false
-      }
+      "bundleIdentifier": "br.com.imoblr"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      },
-      "package": "com.imoblr.app"
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
     },
-    "plugins": [
-      "expo-router",
-      [
-        "expo-secure-store",
-        {
-          "faceIDPermission": "Allow $(PRODUCT_NAME) to access your Face ID biometric data."
-        }
-      ]
-    ]
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": ["expo-router"],
+    "experiments": {
+      "typedRoutes": true
+    }
   }
 }
