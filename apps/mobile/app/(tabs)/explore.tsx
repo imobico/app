@@ -6,6 +6,7 @@ import { ExternalLink } from '@/components/ExternalLink'
 import ParallaxScrollView from '@/components/ParallaxScrollView'
 import { ThemedText } from '@/components/ThemedText'
 import { ThemedView } from '@/components/ThemedView'
+import { Paragraph } from 'tamagui'
 
 export default function TabTwoScreen() {
   return (
@@ -49,8 +50,15 @@ export default function TabTwoScreen() {
         </ExternalLink>
       </Collapsible>
       <Collapsible title='Custom fonts'>
+        <Paragraph textTransform='lowercase' padding='10px' fontSize='30px' backgroundColor='white'>
+          The quick brown fox
+        </Paragraph>
         <ThemedText>
-          Open <ThemedText type='defaultSemiBold'>app/_layout.tsx</ThemedText> to see how to load{' '}
+          Open <ThemedText style={{ fontSize: '30px' }}>app/_layout.tsx</ThemedText> to see how to
+          load{' '}
+          <ThemedText style={{ fontWeight: 'bold', fontFamily: 'EudoxusSans' }}>
+            acustom fonts such as this one.
+          </ThemedText>
           <ThemedText style={{ fontFamily: 'SpaceMono' }}>
             custom fonts such as this one.
           </ThemedText>

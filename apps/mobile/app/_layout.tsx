@@ -14,6 +14,7 @@ SplashScreen.preventAutoHideAsync()
 export default function RootLayout() {
   const colorScheme = useColorScheme()
   const [loaded] = useFonts({
+    EudoxusSans: require('../assets/fonts/Eudoxus-Sans/Variable/EudoxusSansGX.ttf'),
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   })
 

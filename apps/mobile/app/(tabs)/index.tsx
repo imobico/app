@@ -1,10 +1,63 @@
-import { Button as TamaguiButton } from '@imoblr/ui'
+import type { CheckboxProps, SizeTokens } from '@imoblr/ui'
+
+import {
+  Checkbox,
+  Label,
+  Separator,
+  Switch,
+  Button as TamaguiButton,
+  Text,
+  XStack,
+  YStack,
+} from '@imoblr/ui'
 import { Button, Image, Platform, StyleSheet } from 'react-native'
 
 import { HelloWave } from '@/components/HelloWave'
 import ParallaxScrollView from '@/components/ParallaxScrollView'
 import { ThemedText } from '@/components/ThemedText'
 import { ThemedView } from '@/components/ThemedView'
+
+export function CheckboxWithLabel({
+  size,
+  label = 'Accept terms and conditions',
+  ...checkboxProps
+}: CheckboxProps & { size: SizeTokens; label?: string }) {
+  const id = `checkbox-${size.toString().slice(1)}`
+  return (
+    <XStack width={300} alignItems='center' space='$4'>
+      <Checkbox id={id} size={size} {...checkboxProps}>
+        <Checkbox.Indicator>
+          <Text>X</Text>
+        </Checkbox.Indicator>
+      </Checkbox>
+
+      <Label size={size} htmlFor={id}>
+        {label}
+      </Label>
+    </XStack>
+  )
+}
+
+export function SwitchWithLabel(props: { size: SizeTokens; defaultChecked?: boolean }) {
+  const id = `switch-${props.size.toString().slice(1)}-${props.defaultChecked ?? ''}}`
+  return (
+    <XStack width={200} alignItems='center' gap='$4'>
+      <Label
+        paddingRight='$0'
+        minWidth={90}
+        justifyContent='flex-end'
+        size={props.size}
+        htmlFor={id}
+      >
+        Accept
+      </Label>
+      <Separator minHeight={20} vertical />
+      <Switch id={id} size={props.size} defaultChecked={props.defaultChecked}>
+        <Switch.Thumb animation='quicker' />
+      </Switch>
+    </XStack>
+  )
+}
 
 export default function HomeScreen() {
   return (
@@ -24,6 +77,18 @@ export default function HomeScreen() {
       <ThemedView style={styles.stepContainer}>
         <ThemedText type='subtitle'>Step 1: Try it</ThemedText>
         <ThemedView style={styles.stepContainer}>
+          <YStack width={200} alignItems='center' gap='$3'>
+            <XStack gap='$3' $xs={{ flexDirection: 'column' }}>
+              <Switch size='$2'>
+                <Switch.Thumb animation='quick' />
+              </Switch>
+            </XStack>
+          </YStack>
+          <YStack width={300} alignItems='center' space='$2'>
+            <CheckboxWithLabel size='$3' />
+            <CheckboxWithLabel size='$4' defaultChecked />
+            <CheckboxWithLabel size='$5' disabled label='Accept terms (disabled)' />
+          </YStack>
           <TamaguiButton onPress={() => console.log('pressed')}>My tamagui button</TamaguiButton>
         </ThemedView>
         <ThemedText>
