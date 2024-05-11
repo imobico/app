@@ -52,8 +52,8 @@ export function SwitchWithLabel(props: { size: SizeTokens; defaultChecked?: bool
         Accept
       </Label>
       <Separator minHeight={20} vertical />
-      <Switch id={id} size={props.size} defaultChecked={props.defaultChecked}>
-        <Switch.Thumb animation='quicker' />
+      <Switch theme='light' id={id} size={props.size} defaultChecked={props.defaultChecked}>
+        <Switch.Thumb animation='faster' />
       </Switch>
     </XStack>
   )
@@ -79,9 +79,20 @@ export default function HomeScreen() {
         <ThemedView style={styles.stepContainer}>
           <YStack width={200} alignItems='center' gap='$3'>
             <XStack gap='$3' $xs={{ flexDirection: 'column' }}>
-              <Switch size='$2'>
-                <Switch.Thumb animation='quick' />
-              </Switch>
+              <YStack width={200} alignItems='center' gap='$3'>
+                <XStack gap='$3' $xs={{ flexDirection: 'column' }}>
+                  <SwitchWithLabel size='$2' />
+                  <SwitchWithLabel size='$2' defaultChecked />
+                </XStack>
+                <XStack gap='$3' $xs={{ flexDirection: 'column' }}>
+                  <SwitchWithLabel size='$3' />
+                  <SwitchWithLabel size='$3' defaultChecked />
+                </XStack>
+                <XStack gap='$3' $xs={{ flexDirection: 'column' }}>
+                  <SwitchWithLabel size='$4' />
+                  <SwitchWithLabel size='$4' defaultChecked />
+                </XStack>
+              </YStack>
             </XStack>
           </YStack>
           <YStack width={300} alignItems='center' space='$2'>

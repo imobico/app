@@ -3,7 +3,7 @@
 import '@tamagui/core/reset.css'
 import '@tamagui/polyfill-dev'
 
-import { TamaguiProvider as TamaguiProviderOG, config } from '@imoblr/ui'
+import { TamaguiProvider, config } from '@imoblr/ui'
 import { NextThemeProvider, useRootTheme } from '@tamagui/next-theme'
 import { useServerInsertedHTML } from 'next/navigation'
 import type { ReactNode } from 'react'
@@ -39,13 +39,13 @@ export const TamaguiNextProvider = ({ children }: { children: ReactNode }) => {
         setTheme(next as any)
       }}
     >
-      <TamaguiProviderOG
+      <TamaguiProvider
         config={config}
         themeClassNameOnRoot
         defaultTheme={(scheme || theme) === 'dark' ? 'dark' : 'light'}
       >
         {children}
-      </TamaguiProviderOG>
+      </TamaguiProvider>
     </NextThemeProvider>
   )
 }
