@@ -7,6 +7,7 @@ import {
   Switch,
   Button as TamaguiButton,
   Text,
+  Theme,
   XStack,
   YStack,
 } from '@imoblr/ui'
@@ -80,14 +81,18 @@ export default function HomeScreen() {
           <YStack width={200} alignItems='center' gap='$3'>
             <XStack gap='$3' $xs={{ flexDirection: 'column' }}>
               <YStack width={200} alignItems='center' gap='$3'>
-                <XStack gap='$3' $xs={{ flexDirection: 'column' }}>
-                  <SwitchWithLabel size='$2' />
-                  <SwitchWithLabel size='$2' defaultChecked />
-                </XStack>
-                <XStack gap='$3' $xs={{ flexDirection: 'column' }}>
-                  <SwitchWithLabel size='$3' />
-                  <SwitchWithLabel size='$3' defaultChecked />
-                </XStack>
+                <Theme name='dark_blue'>
+                  <XStack gap='$3' $xs={{ flexDirection: 'column' }}>
+                    <SwitchWithLabel size='$2' />
+                    <SwitchWithLabel size='$2' defaultChecked />
+                  </XStack>
+                </Theme>
+                <Theme name='blue'>
+                  <XStack gap='$3' $xs={{ flexDirection: 'column' }}>
+                    <SwitchWithLabel size='$3' />
+                    <SwitchWithLabel size='$3' defaultChecked />
+                  </XStack>
+                </Theme>
                 <XStack gap='$3' $xs={{ flexDirection: 'column' }}>
                   <SwitchWithLabel size='$4' />
                   <SwitchWithLabel size='$4' defaultChecked />
@@ -96,7 +101,9 @@ export default function HomeScreen() {
             </XStack>
           </YStack>
           <YStack width={300} alignItems='center' space='$2'>
-            <CheckboxWithLabel size='$3' />
+            <Theme name='blue'>
+              <CheckboxWithLabel size='$3' />
+            </Theme>
             <CheckboxWithLabel size='$4' defaultChecked />
             <CheckboxWithLabel size='$5' disabled label='Accept terms (disabled)' />
           </YStack>
