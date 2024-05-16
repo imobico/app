@@ -1,7 +1,9 @@
 import type { CheckboxProps, SizeTokens } from '@imoblr/ui'
+import { useThemeSetting } from '@tamagui/next-theme'
 
 import {
   Checkbox,
+  Heading,
   Label,
   Separator,
   Switch,
@@ -10,6 +12,7 @@ import {
   Theme,
   XStack,
   YStack,
+  useIsomorphicLayoutEffect,
 } from '@imoblr/ui'
 import { Button, Image, Platform, StyleSheet } from 'react-native'
 
@@ -17,6 +20,7 @@ import { HelloWave } from '@/components/HelloWave'
 import ParallaxScrollView from '@/components/ParallaxScrollView'
 import { ThemedText } from '@/components/ThemedText'
 import { ThemedView } from '@/components/ThemedView'
+import { useState } from 'react'
 
 export function CheckboxWithLabel({
   size,
@@ -61,6 +65,13 @@ export function SwitchWithLabel(props: { size: SizeTokens; defaultChecked?: bool
 }
 
 export default function HomeScreen() {
+  const themeSetting = useThemeSetting()
+  const [clientTheme, setClientTheme] = useState<string>('dark')
+
+  useIsomorphicLayoutEffect(() => {
+    setClientTheme(themeSetting.current || 'dark')
+  }, [themeSetting.current, themeSetting.resolvedTheme])
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -72,7 +83,8 @@ export default function HomeScreen() {
       }
     >
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type='title'>Welcome!</ThemedText>
+        <Heading>Welcome!</Heading>
+        <TamaguiButton onPress={themeSetting.toggle}>Change theme: {clientTheme}</TamaguiButton>
         <HelloWave />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
@@ -81,13 +93,13 @@ export default function HomeScreen() {
           <YStack width={200} alignItems='center' gap='$3'>
             <XStack gap='$3' $xs={{ flexDirection: 'column' }}>
               <YStack width={200} alignItems='center' gap='$3'>
-                <Theme name='dark_blue'>
+                <Theme name='dark_purple'>
                   <XStack gap='$3' $xs={{ flexDirection: 'column' }}>
                     <SwitchWithLabel size='$2' />
                     <SwitchWithLabel size='$2' defaultChecked />
                   </XStack>
                 </Theme>
-                <Theme name='blue'>
+                <Theme name='purple'>
                   <XStack gap='$3' $xs={{ flexDirection: 'column' }}>
                     <SwitchWithLabel size='$3' />
                     <SwitchWithLabel size='$3' defaultChecked />
@@ -101,7 +113,7 @@ export default function HomeScreen() {
             </XStack>
           </YStack>
           <YStack width={300} alignItems='center' space='$2'>
-            <Theme name='blue'>
+            <Theme name='purple'>
               <CheckboxWithLabel size='$3' />
             </Theme>
             <CheckboxWithLabel size='$4' defaultChecked />
