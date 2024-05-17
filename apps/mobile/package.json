@@ -47,13 +47,10 @@
     "build:ios": "eas build --platform ios --profile production --local",
     "build:ios:preview": "eas build --platform ios --profile preview --local",
     "clean": "git clean -xdf .expo node_modules ios android",
-    "dev:android": "expo run:android",
+    "dev:android": "expo run:android --device",
     "dev:android:go": "expo start --android",
-    "dev:ios": "expo run:ios",
+    "dev:ios": "expo run:ios --device",
     "dev:ios:go": "expo start --ios",
-    "prebuild": "expo prebuild",
-    "reset-project": "./scripts/reset-project.js",
-    "android": "expo run:android",
-    "ios": "expo run:ios"
+    "prebuild": "expo prebuild"
   }
 }

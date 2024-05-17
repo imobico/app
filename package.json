@@ -10,7 +10,7 @@
     "dotenv-cli": "^7.4.2",
     "lefthook": "^1.6.10",
     "syncpack": "^12.3.2",
-    "turbo": "^1.13.3"
+    "turbo": "1.13.4-canary.4"
   },
   "packageManager": "bun@1.1.7",
   "private": true,

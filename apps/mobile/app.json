@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "imoblr-expo-upgrade",
-    "slug": "imoblr-expo-upgrade",
+    "name": "Imoblr",
+    "slug": "imoblr",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "imoblr",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
