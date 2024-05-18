@@ -51,6 +51,8 @@
     "dev:android:go": "expo start --android",
     "dev:ios": "expo run:ios --device",
     "dev:ios:go": "expo start --ios",
-    "prebuild": "expo prebuild"
+    "prebuild": "expo prebuild",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
   }
 }
