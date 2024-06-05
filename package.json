@@ -52,7 +52,7 @@
   "devDependencies": {
     "@biomejs/biome": "^1.7.1",
     "lefthook": "^1.6.10",
-    "turbo": "^1.13.3",
+    "turbo": "^2.0.0",
     "dotenv-cli": "^7.4.1"
   },
   "trustedDependencies": ["@biomejs/biome"],
