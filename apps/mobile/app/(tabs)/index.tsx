@@ -29,8 +29,8 @@ export function CheckboxWithLabel({
 }: CheckboxProps & { size: SizeTokens; label?: string }) {
   const id = `checkbox-${size.toString().slice(1)}`
   return (
-    <XStack width={300} alignItems='center' space='$4'>
-      <Checkbox id={id} size={size} {...checkboxProps}>
+    <XStack width={300} alignItems='center' gap='$6'>
+      <Checkbox theme='purple' id={id} size={size} {...checkboxProps}>
         <Checkbox.Indicator>
           <Text>X</Text>
         </Checkbox.Indicator>
@@ -57,7 +57,7 @@ export function SwitchWithLabel(props: { size: SizeTokens; defaultChecked?: bool
         Accept
       </Label>
       <Separator minHeight={20} vertical />
-      <Switch theme='light' id={id} size={props.size} defaultChecked={props.defaultChecked}>
+      <Switch theme='purple' id={id} size={props.size} defaultChecked={props.defaultChecked}>
         <Switch.Thumb animation='faster' />
       </Switch>
     </XStack>
@@ -66,10 +66,10 @@ export function SwitchWithLabel(props: { size: SizeTokens; defaultChecked?: bool
 
 export default function HomeScreen() {
   const themeSetting = useThemeSetting()
-  const [clientTheme, setClientTheme] = useState<string>('dark')
+  const [clientTheme, setClientTheme] = useState<string>('purple')
 
   useIsomorphicLayoutEffect(() => {
-    setClientTheme(themeSetting.current || 'dark')
+    setClientTheme(themeSetting.current || 'purple')
   }, [themeSetting.current, themeSetting.resolvedTheme])
 
   return (
@@ -84,7 +84,14 @@ export default function HomeScreen() {
     >
       <ThemedView style={styles.titleContainer}>
         <Heading>Welcome!</Heading>
-        <TamaguiButton onPress={themeSetting.toggle}>Change theme: {clientTheme}</TamaguiButton>
+        <YStack>
+          <Text backgroundColor='$dark4' color='$purple9' p='$3'>
+            dsfdsfdsfds
+          </Text>
+        </YStack>
+        <TamaguiButton theme='purple' onPress={themeSetting.toggle}>
+          Change theme: {clientTheme}
+        </TamaguiButton>
         <HelloWave />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>

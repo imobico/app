@@ -16,7 +16,6 @@ const plugins = [
     appDir: true,
     config: '../../packages/config/src/tamagui.config.ts',
     components: ['tamagui', '@imoblr/ui'],
-    importsWhitelist: ['constants.js', 'colors.js'],
     outputCSS: process.env.NODE_ENV === 'production' ? './public/tamagui.css' : null,
     logTimings: true,
     disableExtraction,

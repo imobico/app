@@ -1,28 +1,53 @@
 import { createSoftenMask, createThemeBuilder } from '@tamagui/theme-builder'
 import colors from './colors'
+import { shadows } from './shadows'
+import { templates } from './templates'
+import { darkColors, lightColors } from './tokens'
+
+const colorThemeDefinition = (colorName: string) => [
+  {
+    parent: 'light',
+    palette: colorName,
+    template: 'colorLight',
+  },
+  {
+    parent: 'dark',
+    palette: colorName,
+    template: 'base',
+  },
+]
+
+const switchThumbTheme = [
+  {
+    parent: 'active',
+    template: 'inverseActive',
+  },
+  {
+    parent: '',
+    template: 'switchThumb',
+  },
+]
 
 const themesBuilder = createThemeBuilder()
   .addPalettes(colors)
   .addTemplates({
-    base: {
+    ...templates,
+    switchThumb: {
       background: 0,
-      backgroundFocus: 0,
-      backgroundHover: 0,
-      backgroundPress: 0,
-      borderColor: 0,
-      borderColorFocus: 0,
-      borderColorHover: 0,
-      borderColorPress: 0,
-      color: 0,
-      colorFocus: 0,
-      colorHover: 0,
-      colorPress: 0,
-      colorTransparent: 0,
-      placeholderColor: 0,
-      shadowColor: 0,
-      shadowColorFocus: 0,
-      shadowColorHover: 0,
-      shadowColorPress: 0,
+      backgroundHover: 2,
+      backgroundPress: 2,
+      backgroundFocus: 4,
+      borderColor: 3,
+      borderColorHover: 6,
+      borderColorPress: 2,
+      borderColorFocus: 4,
+      outlineColor: 4,
+      color: 4,
+      colorHover: 3,
+      colorPress: 4,
+      colorTransparent: 1,
+      placeholderColor: 2,
+      shadowColor: 3,
     },
   })
   .addMasks({
@@ -32,20 +57,25 @@ const themesBuilder = createThemeBuilder()
     light: {
       template: 'base',
       palette: 'light',
+      nonInheritedValues: {
+        ...lightColors,
+        ...shadows.light,
+      },
     },
     dark: {
       template: 'base',
       palette: 'dark',
-    },
-    primary: {
-      template: 'base',
-      palette: 'blue',
+      nonInheritedValues: {
+        ...darkColors,
+        ...shadows.dark,
+      },
     },
   })
   .addChildThemes({
-    subtle: {
-      mask: 'soften',
-    },
+    purple: colorThemeDefinition('purple'),
+  })
+  .addComponentThemes({
+    SwitchThumb: switchThumbTheme,
   })
 
 export const themes = themesBuilder.build()
