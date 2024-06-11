@@ -15,7 +15,7 @@ const tokens = {
   color: { ...colorTokens },
 }
 
-console.log('tokens', tokens)
+console.log('themes', themes)
 
 const headingFont = createInterFont({
   size: {
@@ -61,7 +61,7 @@ const bodyFont = createInterFont(
   },
 )
 
-export const tamaguiConfig = createTamagui({
+export default createTamagui({
   defaultFont: 'body',
   animations,
   shouldAddPrefersColorThemes: true,
