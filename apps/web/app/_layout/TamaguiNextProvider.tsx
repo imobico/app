@@ -41,7 +41,7 @@ export const TamaguiNextProvider = ({ children }: { children: ReactNode }) => {
     //   }}
     // >
     <TamaguiProvider
-      // config={tamaguiConfig}
+      config={tamaguiConfig}
       // themeClassNameOnRoot
       defaultTheme={(scheme || theme) === 'light' ? 'light' : 'dark'}
     >
