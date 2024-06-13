@@ -1,4 +1,4 @@
-import { config as tamaguiConfig } from '@imoblr/config'
+import { tamaguiConfig } from '@imoblr/config'
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native'
 import { TamaguiProvider, Theme } from '@tamagui/core'
 import { useFonts } from 'expo-font'
@@ -31,7 +31,8 @@ export default function RootLayout() {
   return (
     <TamaguiProvider
       config={tamaguiConfig}
-      defaultTheme={colorScheme === 'dark' ? 'dark' : 'light'}
+      // defaultTheme={colorScheme === 'dark' ? 'dark' : 'light'}
+      defaultTheme='dark'
     >
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <Theme name='purple'>

@@ -38,7 +38,7 @@
     "lint": "bunx @biomejs/biome lint ./packages ./apps",
     "postinstall": "bun run check-deps",
     "prepare": "lefthook install",
-    "web": "bun dotenv -c -- turbo dev:web --parallel --filter={@imoblr/web-app,@imoblr/ui}"
+    "web": "bun dotenv -c -- turbo dev:web"
   },
   "trustedDependencies": ["@biomejs/biome", "@swc/core", "esbuild", "lefthook"],
   "workspaces": ["./apps/*", "./packages/*"]

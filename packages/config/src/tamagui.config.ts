@@ -15,8 +15,6 @@ const tokens = {
   color: { ...colorTokens },
 }
 
-console.log('themes', themes)
-
 const headingFont = createInterFont({
   size: {
     6: 15,

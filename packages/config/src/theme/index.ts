@@ -1,8 +1,8 @@
 import { createSoftenMask, createThemeBuilder } from '@tamagui/theme-builder'
 import colors from './colors'
-import { shadows } from './shadows'
 import { templates } from './templates'
-import { darkColors, lightColors } from './tokens'
+// import { shadows } from "./shadows";
+// import { darkColors, lightColors } from "./tokens";
 
 const colorThemeDefinition = (colorName: string) => [
   {
@@ -57,18 +57,18 @@ const themesBuilder = createThemeBuilder()
     light: {
       template: 'base',
       palette: 'light',
-      nonInheritedValues: {
-        ...lightColors,
-        ...shadows.light,
-      },
+      // nonInheritedValues: {
+      //   ...lightColors,
+      //   ...shadows.light,
+      // },
     },
     dark: {
       template: 'base',
       palette: 'dark',
-      nonInheritedValues: {
-        ...darkColors,
-        ...shadows.dark,
-      },
+      // nonInheritedValues: {
+      //   ...darkColors,
+      //   ...shadows.dark,
+      // },
     },
   })
   .addChildThemes({

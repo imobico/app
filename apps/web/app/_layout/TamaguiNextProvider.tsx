@@ -22,10 +22,7 @@ export const TamaguiNextProvider = ({ children }: { children: ReactNode }) => {
         <style
           dangerouslySetInnerHTML={{
             __html: tamaguiConfig.getCSS({
-              // if you are using "outputCSS" option, you should use this "exclude"
-              // if not, then you can leave the option out
-              // exclude:
-              //   process.env.NODE_ENV === "production" ? "design-system" : null,
+              exclude: process.env.NODE_ENV === 'production' ? 'design-system' : null,
             }),
           }}
         />
@@ -34,19 +31,20 @@ export const TamaguiNextProvider = ({ children }: { children: ReactNode }) => {
   })
 
   return (
-    // <NextThemeProvider
-    //   skipNextHead
-    //   onChangeTheme={(next) => {
-    //     setTheme(next as any);
-    //   }}
-    // >
-    <TamaguiProvider
-      config={tamaguiConfig}
-      // themeClassNameOnRoot
-      defaultTheme={(scheme || theme) === 'light' ? 'light' : 'dark'}
+    <NextThemeProvider
+      skipNextHead
+      onChangeTheme={(next) => {
+        setTheme(next as any)
+      }}
     >
-      {children}
-    </TamaguiProvider>
-    // </NextThemeProvider>
+      <TamaguiProvider
+        config={tamaguiConfig}
+        themeClassNameOnRoot
+        // defaultTheme={(scheme || theme) === "light" ? "light" : "dark"}
+        defaultTheme='light'
+      >
+        {children}
+      </TamaguiProvider>
+    </NextThemeProvider>
   )
 }
