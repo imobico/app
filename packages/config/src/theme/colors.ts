@@ -1,62 +1,79 @@
-// export {
-//   blue,
-//   blueDark,
-//   gray,
-//   grayDark,
-//   green,
-//   greenDark,
-//   orange,
-//   orangeDark,
-//   pink,
-//   pinkDark,
-//   purple,
-//   purpleDark,
-//   red,
-//   redDark,
-//   yellow,
-//   yellowDark,
-// } from '@tamagui/colors'
-
 import type { VariableVal } from '@tamagui/web'
-import { createTokens } from 'tamagui'
 
-export const dark = ['#000', '#111', '#222', '#999', '#ccc', '#eee', '#fff']
-export const light = ['#fff', '#eee', '#ccc', '#999', '#222', '#111', '#000']
-
-export const purple = [
-  '#f7f6fc', // background
-  '#f0eef9',
-  '#e3dff5',
-  '#ccc5ed',
-  '#b2a3e2',
-  '#967dd5',
-  '#8461c6',
-  '#7854b5',
-  '#604196',
-  '#51377b',
-  '#322253',
-  '#322253', // foreground
+export const slate = [
+  '#FCFCFD',
+  '#F9FAFB',
+  '#F2F4F7',
+  '#F2F4F7',
+  '#EAECF0',
+  '#D0D5DD',
+  '#98A2B3',
+  '#667085',
+  '#475467',
+  '#344054',
+  '#182230',
+  '#101828',
+  '#0C111D',
+  '#090D17',
+  '#060A11',
 ]
 
-export const dark_purple = [
-  '#322253', // background
-  '#51377b',
-  '#604196',
-  '#7854b5',
-  '#8461c6',
-  '#967dd5',
-  '#b2a3e2',
-  '#ccc5ed',
-  '#e3dff5',
-  '#f0eef9',
-  '#f7f6fc', // foreground
+export const slate_dark = [
+  '#060A11',
+  '#090D17',
+  '#101828',
+  '#182230',
+  '#344054',
+  '#475467',
+  '#667085',
+  '#98A2B3',
+  '#D0D5DD',
+  '#EAECF0',
+  '#F2F4F7',
+  '#F2F4F7',
+  '#F9FAFB',
+  '#FCFCFD',
+]
+
+export const purple = [
+  '#FCFAFF', // background
+  '#F9F5FF',
+  '#F4EBFF',
+  '#E9D7FE',
+  '#D6BBFB',
+  '#B692F6',
+  '#9E77ED',
+  '#7F56D9',
+  '#6941C6',
+  '#53389E',
+  '#42307D',
+  '#2C1C5F',
+  '#170F34',
+  '#0D0820',
+]
+
+export const purple_dark = [
+  '#0D0820',
+  '#170F34',
+  '#2C1C5F', // background
+  '#42307D',
+  '#53389E',
+  '#6941C6',
+  '#7F56D9',
+  '#9E77ED',
+  '#B692F6',
+  '#D6BBFB',
+  '#E9D7FE',
+  '#F4EBFF',
+  '#F9F5FF',
+  '#FCFAFF', // foreground
 ]
 
 export const colors = {
-  light,
-  dark,
+  slate,
+  slate_dark,
   purple,
-  dark_purple,
+  purple_dark,
 }
 
 /*
@@ -75,4 +92,4 @@ export const colorTokens = Object.fromEntries(
   ),
 ) as { [key: string]: VariableVal }
 
-export default colors
+export default colorTokens

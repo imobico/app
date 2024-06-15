@@ -1,19 +1,19 @@
 import { createSoftenMask, createThemeBuilder } from '@tamagui/theme-builder'
-import colors from './colors'
+import { palettes } from './palettes'
 import { templates } from './templates'
 // import { shadows } from "./shadows";
 // import { darkColors, lightColors } from "./tokens";
 
-const colorThemeDefinition = (colorName: string) => [
+const colorThemeDefinition = (colorName: string, darkColorName: string) => [
   {
     parent: 'light',
     palette: colorName,
-    template: 'colorLight',
+    template: 'baseLight',
   },
   {
     parent: 'dark',
-    palette: colorName,
-    template: 'base',
+    palette: darkColorName,
+    template: 'baseDark',
   },
 ]
 
@@ -29,7 +29,7 @@ const switchThumbTheme = [
 ]
 
 const themesBuilder = createThemeBuilder()
-  .addPalettes(colors)
+  .addPalettes(palettes)
   .addTemplates({
     ...templates,
     switchThumb: {
@@ -55,7 +55,7 @@ const themesBuilder = createThemeBuilder()
   })
   .addThemes({
     light: {
-      template: 'base',
+      template: 'baseLight',
       palette: 'light',
       // nonInheritedValues: {
       //   ...lightColors,
@@ -63,7 +63,7 @@ const themesBuilder = createThemeBuilder()
       // },
     },
     dark: {
-      template: 'base',
+      template: 'baseDark',
       palette: 'dark',
       // nonInheritedValues: {
       //   ...darkColors,
@@ -72,7 +72,7 @@ const themesBuilder = createThemeBuilder()
     },
   })
   .addChildThemes({
-    purple: colorThemeDefinition('purple'),
+    purple: colorThemeDefinition('purple', 'purple_dark'),
   })
   .addComponentThemes({
     SwitchThumb: switchThumbTheme,

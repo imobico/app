@@ -7,7 +7,7 @@ import { NextThemeProvider, useRootTheme } from '@tamagui/next-theme'
 import { useServerInsertedHTML } from 'next/navigation'
 import type { ReactNode } from 'react'
 import { StyleSheet, useColorScheme } from 'react-native'
-import { TamaguiProvider } from 'tamagui'
+import { TamaguiProvider, Theme } from 'tamagui'
 
 export const TamaguiNextProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useRootTheme()
@@ -43,7 +43,7 @@ export const TamaguiNextProvider = ({ children }: { children: ReactNode }) => {
         // defaultTheme={(scheme || theme) === "light" ? "light" : "dark"}
         defaultTheme='light'
       >
-        {children}
+        <Theme name='purple'>{children}</Theme>
       </TamaguiProvider>
     </NextThemeProvider>
   )

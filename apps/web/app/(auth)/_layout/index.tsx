@@ -8,7 +8,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <View flex={1} backgroundColor='$darkPurple1'>
+    <View flex={1} backgroundColor='$purple14'>
       {children}
     </View>
   )
