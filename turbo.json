@@ -1,43 +1,77 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDotEnv": [".env.local", ".env"],
-  "globalDependencies": ["**/.env.*local"],
-  "experimentalUI": true,
-  "pipeline": {
+  "globalDependencies": ["**/.env.*local", ".env.local", ".env"],
+  "tasks": {
     "dev:ios": {
-      "dotEnv": [".env.development.local", ".env.local", ".env.development", ".env"],
       "cache": false,
       "persistent": true,
-      "outputs": ["ios/**"]
+      "outputs": ["ios/**"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.development.local",
+        ".env.local",
+        ".env.development",
+        ".env"
+      ]
     },
     "dev:android": {
-      "dotEnv": [".env.development.local", ".env.local", ".env.development", ".env"],
-      "cache": false,
-      "persistent": true
-    },
-    "dev:ios:go": {
-      "dotEnv": [".env.development.local", ".env.local", ".env.development", ".env"],
       "cache": false,
       "persistent": true,
-      "outputs": ["ios/**"]
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.development.local",
+        ".env.local",
+        ".env.development",
+        ".env"
+      ]
+    },
+    "dev:ios:go": {
+      "cache": false,
+      "persistent": true,
+      "outputs": ["ios/**"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.development.local",
+        ".env.local",
+        ".env.development",
+        ".env"
+      ]
     },
     "dev:android:go": {
-      "dotEnv": [".env.development.local", ".env.local", ".env.development", ".env"],
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.development.local",
+        ".env.local",
+        ".env.development",
+        ".env"
+      ]
     },
     "build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "lint": {
-      "dotEnv": [".env.development.local", ".env.local", ".env.development", ".env"],
-      "dependsOn": ["^lint"]
+      "dependsOn": ["^lint"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.development.local",
+        ".env.local",
+        ".env.development",
+        ".env"
+      ]
     },
     "dev:web": {
-      "dotEnv": [".env.development.local", ".env.local", ".env.development", ".env"],
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.development.local",
+        ".env.local",
+        ".env.development",
+        ".env"
+      ]
     }
   }
 }
