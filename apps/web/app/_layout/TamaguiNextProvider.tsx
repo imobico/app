@@ -2,12 +2,12 @@
 
 import '@tamagui/core/reset.css'
 import '@tamagui/polyfill-dev'
-
-import { TamaguiProvider as TamaguiProviderOG, config } from '@imoblr/ui'
+import { tamaguiConfig } from '@imoblr/config'
 import { NextThemeProvider, useRootTheme } from '@tamagui/next-theme'
 import { useServerInsertedHTML } from 'next/navigation'
 import type { ReactNode } from 'react'
 import { StyleSheet, useColorScheme } from 'react-native'
+import { TamaguiProvider, Theme } from 'tamagui'
 
 export const TamaguiNextProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useRootTheme()
@@ -21,9 +21,7 @@ export const TamaguiNextProvider = ({ children }: { children: ReactNode }) => {
         <style dangerouslySetInnerHTML={{ __html: rnwStyle.textContent }} id={rnwStyle.id} />
         <style
           dangerouslySetInnerHTML={{
-            __html: config.getCSS({
-              // if you are using "outputCSS" option, you should use this "exclude"
-              // if not, then you can leave the option out
+            __html: tamaguiConfig.getCSS({
               exclude: process.env.NODE_ENV === 'production' ? 'design-system' : null,
             }),
           }}
@@ -39,13 +37,14 @@ export const TamaguiNextProvider = ({ children }: { children: ReactNode }) => {
         setTheme(next as any)
       }}
     >
-      <TamaguiProviderOG
-        config={config}
+      <TamaguiProvider
+        config={tamaguiConfig}
         themeClassNameOnRoot
-        defaultTheme={(scheme || theme) === 'dark' ? 'dark' : 'light'}
+        // defaultTheme={(scheme || theme) === "light" ? "light" : "dark"}
+        defaultTheme='light'
       >
-        {children}
-      </TamaguiProviderOG>
+        <Theme name='purple'>{children}</Theme>
+      </TamaguiProvider>
     </NextThemeProvider>
   )
 }

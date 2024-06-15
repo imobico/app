@@ -5,13 +5,13 @@
   "private": true,
   "sideEffects": ["*.css"],
   "dependencies": {
-    "@imoblr/ui": "workspace:*",
-    "@tamagui/animations-react-native": "^1.96.0",
-    "@tamagui/colors": "^1.96.0",
-    "@tamagui/font-inter": "^1.96.0",
-    "@tamagui/lucide-icons": "^1.96.0",
-    "@tamagui/shorthands": "^1.96.0",
-    "@tamagui/themes": "^1.96.0",
+    "@imoblr/ui": "0.0.1",
+    "@tamagui/animations-react-native": "^1.100.3",
+    "@tamagui/colors": "^1.100.3",
+    "@tamagui/font-inter": "^1.100.3",
+    "@tamagui/lucide-icons": "^1.100.3",
+    "@tamagui/shorthands": "^1.100.3",
+    "@tamagui/themes": "^1.100.3",
     "burnt": "^0.12.2",
     "expo-constants": "~16.0.1",
     "expo-linking": "~6.3.1",
@@ -20,7 +20,7 @@
     "solito": "^4.2.2"
   },
   "devDependencies": {
-    "@types/react": "^18.2.0",
+    "@types/react": "~18.2.79",
     "@types/react-native": "^0.72.8"
   }
 }

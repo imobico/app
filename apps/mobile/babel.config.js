@@ -8,26 +8,23 @@ module.exports = (api) => {
         {
           root: ['../..'],
           alias: {
-            // define aliases to shorten the import paths
-            app: '../../packages/shared',
+            '@imoblr/config': '../../packages/config',
+            '@imoblr/shared': '../../packages/shared',
             '@imoblr/ui': '../../packages/ui',
           },
           extensions: ['.js', '.jsx', '.tsx', '.ios.js', '.android.js'],
         },
       ],
-      // if you want reanimated support
-      // 'react-native-reanimated/plugin',
-      ...(process.env.EAS_BUILD_PLATFORM === 'android'
-        ? []
-        : [
-            [
-              '@tamagui/babel-plugin',
-              {
-                components: ['@imoblr/ui', 'tamagui'],
-                config: '../../packages/config/src/tamagui.config.ts',
-              },
-            ],
-          ]),
+      'react-native-reanimated/plugin',
+      [
+        '@tamagui/babel-plugin',
+        {
+          components: ['@imoblr/ui', '@imoblr/shared', 'tamagui'],
+          config: '../../packages/config/src/tamagui.config.ts',
+          logTimings: true,
+          disableExtraction: process.env.NODE_ENV === 'development',
+        },
+      ],
     ],
   }
 }

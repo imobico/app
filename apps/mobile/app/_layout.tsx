@@ -1,27 +1,22 @@
-import { SharedProviders } from '@imoblr/shared/provider'
-import { SessionProvider } from '@imoblr/shared/provider/session'
-import { TamaguiProvider, config } from '@imoblr/ui'
+import { tamaguiConfig } from '@imoblr/config'
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native'
+import { TamaguiProvider, Theme } from '@tamagui/core'
 import { useFonts } from 'expo-font'
-import { Slot, SplashScreen, Stack } from 'expo-router'
+import { Stack } from 'expo-router'
+import * as SplashScreen from 'expo-splash-screen'
 import { useEffect } from 'react'
-import { useColorScheme } from 'react-native'
 
-export {
-  // Catch any errors thrown by the Layout component.
-  ErrorBoundary,
-} from 'expo-router'
+import { useColorScheme } from '@/hooks/useColorScheme'
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync()
 
-export default function RootLayout({ children }) {
-  const [loaded, error] = useFonts({})
-  const scheme = useColorScheme()
-
-  useEffect(() => {
-    if (error) throw error
-  }, [error])
+export default function RootLayout() {
+  const colorScheme = useColorScheme()
+  const [loaded] = useFonts({
+    EudoxusSans: require('../assets/fonts/Eudoxus-Sans/Variable/EudoxusSansGX.ttf'),
+    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+  })
 
   useEffect(() => {
     if (loaded) {
@@ -35,17 +30,18 @@ export default function RootLayout({ children }) {
 
   return (
     <TamaguiProvider
-      config={config}
-      disableInjectCSS
-      defaultTheme={scheme === 'dark' ? 'dark' : 'light'}
+      config={tamaguiConfig}
+      // defaultTheme={colorScheme === 'dark' ? 'dark' : 'light'}
+      defaultTheme='dark'
     >
-      <SessionProvider>
-        <SharedProviders>
-          <ThemeProvider value={scheme === 'dark' ? DarkTheme : DefaultTheme}>
-            <Slot initialRouteName='/' />
-          </ThemeProvider>
-        </SharedProviders>
-      </SessionProvider>
+      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <Theme name='purple'>
+          <Stack>
+            <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
+            <Stack.Screen name='+not-found' />
+          </Stack>
+        </Theme>
+      </ThemeProvider>
     </TamaguiProvider>
   )
 }

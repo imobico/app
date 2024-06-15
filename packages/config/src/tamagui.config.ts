@@ -1,11 +1,19 @@
-import { createTamagui } from 'tamagui'
 import { createInterFont } from '@tamagui/font-inter'
-import { shorthands } from '@tamagui/shorthands'
-import { tokens } from '@tamagui/themes/v2'
-import { themes } from '@tamagui/themes/v2-themes'
 import { createMedia } from '@tamagui/react-native-media-driver'
+import { shorthands } from '@tamagui/shorthands'
+import { tokens as tamaguiTokens } from '@tamagui/themes'
+import { createTamagui } from 'tamagui'
+import { themes } from './theme'
+import { colorTokens } from './theme/colors'
 
-import { animations } from '@imoblr/ui/src/animations'
+import { animations } from './animations'
+
+const { color, ...tamaguiTokensWithoutColors } = tamaguiTokens
+
+const tokens = {
+  ...tamaguiTokensWithoutColors,
+  color: { ...colorTokens },
+}
 
 const headingFont = createInterFont({
   size: {
@@ -48,27 +56,18 @@ const bodyFont = createInterFont(
   {
     sizeSize: (size) => Math.round(size * 1.1),
     sizeLineHeight: (size) => Math.round(size * 1.1 + (size > 20 ? 10 : 10)),
-  }
+  },
 )
 
-export const config = createTamagui({
+export default createTamagui({
   defaultFont: 'body',
   animations,
   shouldAddPrefersColorThemes: true,
   themeClassNameOnRoot: true,
-  
-  // highly recommended to turn this on if you are using shorthands
-  // to avoid having multiple valid style keys that do the same thing
-  // we leave it off by default because it can be confusing as you onboard.
-  onlyAllowShorthands: false,
   shorthands,
-
   fonts: {
     body: bodyFont,
     heading: headingFont,
-  },
-  settings: {
-    allowedStyleValues: 'somewhat-strict',
   },
   themes,
   tokens,
@@ -89,6 +88,3 @@ export const config = createTamagui({
     pointerCoarse: { pointer: 'coarse' },
   }),
 })
-
-// for the compiler to find it
-export default config

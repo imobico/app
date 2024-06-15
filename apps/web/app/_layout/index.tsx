@@ -1,7 +1,7 @@
 'use client'
 
 import { SharedProviders } from '@imoblr/shared/provider'
-import { type Session, SessionProvider } from '@imoblr/shared/provider/session'
+import { SessionProvider } from '@imoblr/shared/provider/session'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { TamaguiNextProvider } from './TamaguiNextProvider'
 
